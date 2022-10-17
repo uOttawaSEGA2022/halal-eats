@@ -10,59 +10,86 @@
         android:id="@+id/ClientImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/eat"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="53dp"
+        app:layout_constraintEnd_toStartOf="@+id/CookImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ChooseUserType"
+        app:srcCompat="@drawable/eat" />
 
     <Button
         android:id="@+id/NextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="219dp"
         android:backgroundTint="#a799b7"
         android:text="Next"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="464dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ClientImage" />
 
     <TextView
         android:id="@+id/ClientRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="1dp"
         android:text="Client"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="415dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ClientImage" />
 
     <TextView
         android:id="@+id/ChooseUserType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="28dp"
         android:text="Please choose a role:"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="260dp" />
+        app:layout_constraintBottom_toTopOf="@+id/ClientImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WelomeMsg" />
 
     <TextView
         android:id="@+id/CookRole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="1dp"
         android:text="Cook"
-        tools:layout_editor_absoluteX="265dp"
-        tools:layout_editor_absoluteY="415dp" />
+        app:layout_constraintStart_toEndOf="@+id/ClientRole"
+        app:layout_constraintTop_toBottomOf="@+id/CookImage" />
 
     <ImageView
         android:id="@+id/CookImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/cooking"
-        tools:layout_editor_absoluteX="233dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toEndOf="@+id/ClientImage"
+        app:layout_constraintTop_toBottomOf="@+id/ChooseUserType"
+        app:srcCompat="@drawable/cooking" />
 
     <TextView
         android:id="@+id/WelomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="78dp"
         android:text="Welcome to Mealer App!"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="228dp" />
+        app:layout_constraintBottom_toTopOf="@+id/ChooseUserType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
