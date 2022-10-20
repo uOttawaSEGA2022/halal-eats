@@ -59,7 +59,7 @@ public class LoginPage extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // replace '.' with ',' in email
+                // replace '.' with ',' in emailhhjhj
                 String emailWithCommas = textInputEmail.getText().toString().trim().replace(".", ",");
 
                 // verifying if email exists and if password is correct
