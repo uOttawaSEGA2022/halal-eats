@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -32,7 +33,7 @@ public class CookRegistration extends AppCompatActivity {
     private Button register;
     private EditText textInputEmail;
     private EditText textInputPassword;
-
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,12 @@ public class CookRegistration extends AppCompatActivity {
 
 
                 if (validateEmail() && validatePassword()){
+                    String a = textInputEmail.getText().toString().trim();
+                    String b = textInputPassword.getText().toString().trim();
+                    a = a.replace(".",",");
+                    System.out.println(a);
+                    firebaseDatabase.getReference().child("Cook").child(a).child("password").setValue(b);
+
 
 
                     openHomePage();
