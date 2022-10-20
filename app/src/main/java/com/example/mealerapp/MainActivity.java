@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Button login;
-    private Button registerAsCook;
+    private Button regAsCook;
     private Button registerAsUser;
 
     @Override
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         login = (Button) findViewById(R.id.login);
-        registerAsCook = (Button) findViewById(R.id.regAsCook);
+        regAsCook = (Button) findViewById(R.id.regAsCook);
         registerAsUser = (Button) findViewById(R.id.registerAsUser);
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        registerAsCook.setOnClickListener(new View.OnClickListener() {
+        regAsCook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openRegisterAsCookPagePage();
@@ -61,11 +61,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,UserRegistration.class);
         startActivity(intent);
     }
-
-
-
-
-
 
 
 }
