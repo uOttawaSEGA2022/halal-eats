@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserActivity">
+
+    <ImageView
+        android:id="@+id/ClientImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="53dp"
+        app:layout_constraintEnd_toStartOf="@+id/CookImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ChooseUserType"
+        app:srcCompat="@drawable/eat" />
+
+    <Button
+        android:id="@+id/NextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="219dp"
+        android:backgroundTint="#a799b7"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ClientImage" />
+
+    <TextView
+        android:id="@+id/ClientRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="1dp"
+        android:text="Client"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ClientImage" />
+
+    <TextView
+        android:id="@+id/ChooseUserType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="28dp"
+        android:text="Please choose a role:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ClientImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WelomeMsg" />
+
+    <TextView
+        android:id="@+id/CookRole"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="1dp"
+        android:text="Cook"
+        app:layout_constraintStart_toEndOf="@+id/ClientRole"
+        app:layout_constraintTop_toBottomOf="@+id/CookImage" />
+
+    <ImageView
+        android:id="@+id/CookImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintStart_toEndOf="@+id/ClientImage"
+        app:layout_constraintTop_toBottomOf="@+id/ChooseUserType"
+        app:srcCompat="@drawable/cooking" />
+
+    <TextView
+        android:id="@+id/WelomeMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="78dp"
+        android:text="Welcome to Mealer App!"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/ChooseUserType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

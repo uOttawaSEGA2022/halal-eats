@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/Title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="217dp"
+        android:layout_marginEnd="120dp"
+        android:text="Mealer App"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#A799B7"
+        app:layout_constraintBottom_toTopOf="@+id/WelcomeMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/WelcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="33dp"
+        android:text="Welcome! you are logged in as"
+        app:layout_constraintBottom_toTopOf="@+id/EmailText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title2" />
+
+    <TextView
+        android:id="@+id/EmailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="276dp"
+        android:text="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WelcomeMessage" />
+
+    <EditText
+        android:id="@+id/EmailField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="102dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/PasswordText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
+
+    <TextView
+        android:id="@+id/PasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="249dp"
+        android:text="Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailField" />
+
+    <EditText
+        android:id="@+id/PasswordField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/LogInButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
+
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="162dp"
+        android:backgroundTint="#a799b7"
+        android:gravity="center"
+        android:text="Log In"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PasswordField" />
+
+    <TextView
+        android:id="@+id/ForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="173dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginBottom="196dp"
+        android:text="Forgot password?"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LogInButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
