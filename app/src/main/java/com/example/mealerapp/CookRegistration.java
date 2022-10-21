@@ -1,5 +1,6 @@
 package com.example.mealerapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Pattern;
 
@@ -53,25 +59,49 @@ public class CookRegistration extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //ADD IF STATEMENTS HERE FOR REGISTRATION AND STUFF, STORE INFO
                 validateEmail();
                 validatePassword();
 
+                // replace '.' with ',' in emailhhjhj
+                String emailWithCommas = textInputEmail.getText().toString().trim().replace(".", ",");
 
-                if (validateEmail() && validatePassword()){
-                    String a = textInputEmail.getText().toString().trim();
-                    String b = textInputPassword.getText().toString().trim();
-                    a = a.replace(".",",");
-                    System.out.println(a);
-                    firebaseDatabase.getReference().child("users").child(a).child("type").setValue("cook");
-                    firebaseDatabase.getReference().child("users").child(a).child("password").setValue(b);
-                    firebaseDatabase.getReference().child("users").child(a).child("username").setValue(a);
+                // verifying if email exists and if password is correct
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+                Query checkUser = reference.orderByChild("username").equalTo(emailWithCommas);
+                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            // cannot make account
+                            textInputEmail.setError("User already exists");
+                            String passwordFromDB = snapshot.child(emailWithCommas).child("password").getValue().toString();
+                            String userType = snapshot.child(emailWithCommas).child("type").getValue().toString();
+
+
+                        } else {
+                           // create the account
+                            if (validateEmail() && validatePassword()){
+                                String a = textInputEmail.getText().toString().trim();
+                                String b = textInputPassword.getText().toString().trim();
+                                a = a.replace(".",",");
+                                System.out.println(a);
+                                firebaseDatabase.getReference().child("users").child(a).child("type").setValue("cook");
+                                firebaseDatabase.getReference().child("users").child(a).child("password").setValue(b);
+                                firebaseDatabase.getReference().child("users").child(a).child("username").setValue(a);
 
 
 
-                    openHomePage();
-                }
+                                openHomePage();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         });
 
