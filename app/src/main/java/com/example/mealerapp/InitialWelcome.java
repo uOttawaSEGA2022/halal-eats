@@ -52,7 +52,7 @@ public class InitialWelcome extends AppCompatActivity {
     }
 
     public void openLoginPage(){
-        Intent intent = new Intent(this,MainLogIn.class);
+        Intent intent = new Intent(this, MainLogin.class);
         startActivity(intent);
     }
     public void openRegisterAsCookPagePage(){
