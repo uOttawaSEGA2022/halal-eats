@@ -27,7 +27,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginPage"
+            android:name=".MainLogIn"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -41,7 +41,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".InitialWelcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

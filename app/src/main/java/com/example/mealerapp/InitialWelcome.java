@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.database.FirebaseDatabase;
-
-public class MainActivity extends AppCompatActivity {
+public class InitialWelcome extends AppCompatActivity {
 
 
 
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_initial_welcome);
 
         login = (Button) findViewById(R.id.login);
         regAsCook = (Button) findViewById(R.id.regAsCook);
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openLoginPage(){
-        Intent intent = new Intent(this,LoginPage.class);
+        Intent intent = new Intent(this,MainLogIn.class);
         startActivity(intent);
     }
     public void openRegisterAsCookPagePage(){

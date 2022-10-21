@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity">
+    tools:context=".SolinInitialWelcome">
 
     <ImageView
         android:id="@+id/ClientImage"
@@ -16,7 +16,9 @@
         app:layout_constraintEnd_toStartOf="@+id/CookImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ChooseUserType"
-        app:srcCompat="@drawable/eat" />
+        app:srcCompat="@drawable/eat"
+        android:layout_marginRight="53dp"
+        android:layout_marginLeft="80dp" />
 
     <Button
         android:id="@+id/NextButton"

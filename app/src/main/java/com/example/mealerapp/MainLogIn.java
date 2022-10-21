@@ -7,30 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ServerValue;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 //import com.google.firebase.referencecode.database.models.Post;
 //import com.google.firebase.referencecode.database.models.User;
 
-public class LoginPage extends AppCompatActivity {
+public class MainLogIn extends AppCompatActivity {
 
     private Button returnHome;
     private Button login;
@@ -43,7 +33,7 @@ public class LoginPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_main_login);
         login = (Button) findViewById(R.id.loginLogin);
         returnHome = (Button) findViewById(R.id.backToMainLogin);
         textInputEmail = findViewById(R.id.emailLogin);
@@ -97,7 +87,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void openHomePage(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, InitialWelcome.class);
         startActivity(intent);
     }
     public void openSuccLoginPage(){

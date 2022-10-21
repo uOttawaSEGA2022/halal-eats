@@ -9,11 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.regex.Pattern;
 
 public class CookRegistration extends AppCompatActivity {
@@ -78,7 +75,7 @@ public class CookRegistration extends AppCompatActivity {
 
     }
     public void openHomePage(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, InitialWelcome.class);
         startActivity(intent);
     }
 

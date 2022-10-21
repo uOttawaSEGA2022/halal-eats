@@ -27,7 +27,7 @@ public class SuccessfulLogin extends AppCompatActivity {
     }
 
     public void openHomePage(){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, InitialWelcome.class);
         startActivity(intent);
     }
 
