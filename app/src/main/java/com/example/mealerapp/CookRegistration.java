@@ -125,6 +125,13 @@ public class CookRegistration extends AppCompatActivity {
 
 
     }
+
+
+    public boolean checkIfInCooksList(){
+        return true;
+    }
+
+
     private void createCookAccount(String email, String firstName, String lastName, String password,  String address) {
         // replace '.' with ',' for email
         email = email.replace('.', '.');
@@ -140,9 +147,6 @@ public class CookRegistration extends AppCompatActivity {
 
     }
 
-    public boolean checkIfInCooksList(){
-        return true;
-    }
 
 
 
