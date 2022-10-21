@@ -33,6 +33,7 @@ public class CookRegistration extends AppCompatActivity {
     private Button register;
     private EditText textInputEmail;
     private EditText textInputPassword;
+
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     @Override
@@ -119,6 +120,24 @@ public class CookRegistration extends AppCompatActivity {
         }
 
         //DO STUFF HERE TO UPLOAD TO FIREBASE
+
+        //createCookAccount();
+
+
+    }
+    private void createCookAccount(String email, String firstName, String lastName, String password,  String address) {
+        // replace '.' with ',' for email
+        email = email.replace('.', '.');
+
+        // use email as username
+        String userKey = email;
+        firebaseDatabase.getReference().child("users").child(userKey).child("type").setValue("cook");
+        firebaseDatabase.getReference().child("users").child(userKey).child("first name").setValue(firstName);
+        firebaseDatabase.getReference().child("users").child(userKey).child("last name").setValue(lastName);
+        firebaseDatabase.getReference().child("users").child(userKey).child("passwrod").setValue(password);
+        firebaseDatabase.getReference().child("users").child(userKey).child("address").setValue(address);
+        firebaseDatabase.getReference().child("users").child(userKey).child("username").setValue(email);
+
     }
 
     public boolean checkIfInCooksList(){

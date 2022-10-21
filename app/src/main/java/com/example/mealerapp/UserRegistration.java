@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.regex.Pattern;
 
 public class UserRegistration extends AppCompatActivity {
 
     private Button returnHome;
     private Button register;
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -100,6 +104,30 @@ public class UserRegistration extends AppCompatActivity {
         }
 
         //DO STUFF HERE TO UPLOAD TO FIREBASE
+
+
+        //createClientAccount();
+
+    }
+
+    private void createClientAccount(String email, String firstName, String lastName, String password,  String address, String creditCard) {
+        // replace '.' with ',' for email
+        email = email.replace('.', '.');
+
+        // use email as username
+        String userKey = email;
+
+        firebaseDatabase.getReference().child("users").child(userKey).child("type").setValue("client");
+        firebaseDatabase.getReference().child("users").child(userKey).child("first name").setValue(firstName);
+        firebaseDatabase.getReference().child("users").child(userKey).child("last name").setValue(lastName);
+        firebaseDatabase.getReference().child("users").child(userKey).child("passwrod").setValue(password);
+        firebaseDatabase.getReference().child("users").child(userKey).child("address").setValue(address);
+        firebaseDatabase.getReference().child("users").child(userKey).child("username").setValue(email);
+
+
+        // not sure of storing credit card info...
+        firebaseDatabase.getReference().child("users").child(userKey).child("credit card").setValue(creditCard);
+
     }
 
 }

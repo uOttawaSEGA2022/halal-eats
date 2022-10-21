@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private Button regAsCook;
     private Button registerAsUser;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.login);
         regAsCook = (Button) findViewById(R.id.regAsCook);
         registerAsUser = (Button) findViewById(R.id.registerAsUser);
+
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +65,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,UserRegistration.class);
         startActivity(intent);
     }
-
-
 }
