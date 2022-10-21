@@ -106,7 +106,7 @@ public class UserRegistration extends AppCompatActivity {
         //DO STUFF HERE TO UPLOAD TO FIREBASE
 
 
-        //createClientAccount();
+        //createClientAccount(para2, par2, ....);
 
     }
 

@@ -121,7 +121,7 @@ public class CookRegistration extends AppCompatActivity {
 
         //DO STUFF HERE TO UPLOAD TO FIREBASE
 
-        //createCookAccount();
+        //createCookAccount(para2, par2, ....);
 
 
     }
