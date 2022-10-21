@@ -56,7 +56,24 @@ public class UserRegistration extends AppCompatActivity {
             public void onClick(View view) {
 
                 //ADD IF STATEMENTS HERE
-                openHomePage();
+                //ADD IF STATEMENTS HERE FOR REGISTRATION AND STUFF, STORE INFO
+                validateEmail();
+                validatePassword();
+
+
+                if (validateEmail() && validatePassword()){
+                    String a = textInputEmail.getText().toString().trim();
+                    String b = textInputPassword.getText().toString().trim();
+                    a = a.replace(".",",");
+                    System.out.println(a);
+                    firebaseDatabase.getReference().child("users").child(a).child("type").setValue("client");
+                    firebaseDatabase.getReference().child("users").child(a).child("password").setValue(b);
+                    firebaseDatabase.getReference().child("users").child(a).child("username").setValue(a);
+
+
+
+                    openHomePage();
+                }
             }
         });
 

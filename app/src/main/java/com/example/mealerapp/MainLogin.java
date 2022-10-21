@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 //import com.google.firebase.referencecode.database.models.Post;
 //import com.google.firebase.referencecode.database.models.User;
 
-public class MainLogIn extends AppCompatActivity {
+public class MainLogin extends AppCompatActivity {
 
     private Button returnHome;
     private Button login;
@@ -60,10 +60,21 @@ public class MainLogIn extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             String passwordFromDB = snapshot.child(emailWithCommas).child("password").getValue().toString();
+
+                            String userType = snapshot.child(emailWithCommas).child("type").getValue().toString();
                             if (passwordFromDB.equals(textInputPassword.getText().toString().trim())) {
                                 // go to next activity page (show welcome message)
                                 // openRegisterAsCookPage is a placeholder method for openAdminWelcomePage()
-                                openRegisterAsCookPage();
+                                // go to next activity page (show welcome message)
+                                // openRegisterAsCookPage is a placeholder method for openAdminWelcomePage()
+                                // openRegisterAsCookPage();
+                                if (userType.equals("admin")) {
+                                     openAdminWelcomePage();
+                                } else if (userType.equals("client")) {
+                                     openClientWelcomePage();
+                                } else {
+                                     openCookWelcomePage();
+                                }
 
                             }  else {
 
@@ -97,6 +108,21 @@ public class MainLogIn extends AppCompatActivity {
 
     public void openRegisterAsCookPage(){
         Intent intent = new Intent(this,CookRegistration.class);
+        startActivity(intent);
+    }
+    public void openAdminWelcomePage() {
+        Intent intent = new Intent(this,AdminSuccessfulLogin.class);
+        startActivity(intent);
+
+    }
+
+    public void openClientWelcomePage(){
+        Intent intent = new Intent(this, ClientSuccessfulLogin.class);
+        startActivity(intent);
+    }
+
+    public void openCookWelcomePage() {
+        Intent intent = new Intent (this, CookSuccessfulLogin.class);
         startActivity(intent);
     }
 

@@ -13,7 +13,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
-public class CookRegistration extends AppCompatActivity {
+public class ClientRegistration extends AppCompatActivity {
+
+    private Button returnHome;
+    private Button register;
+
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -26,22 +31,18 @@ public class CookRegistration extends AppCompatActivity {
                     ".{4,}" +               //at least 4 characters
                     "$");
 
-    private Button returnHome;
-    private Button register;
     private EditText textInputEmail;
     private EditText textInputPassword;
 
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cook_registration);
-
-        register = (Button) findViewById(R.id.registerAsCookButton);
-        returnHome = (Button) findViewById(R.id.backToMain);
-        textInputEmail = findViewById(R.id.emailCookRegistration);
-        textInputPassword = findViewById(R.id.passwordCookRegistration);
+        setContentView(R.layout.activity_user_registration);
+        register = (Button) findViewById(R.id.buttonUserRegister);
+        returnHome = (Button) findViewById(R.id.backToMainUserReg);
+        textInputEmail = findViewById(R.id.emailUserRegister);
+        textInputPassword = findViewById(R.id.passwordUserRegister);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +55,7 @@ public class CookRegistration extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //ADD IF STATEMENTS HERE
                 //ADD IF STATEMENTS HERE FOR REGISTRATION AND STUFF, STORE INFO
                 validateEmail();
                 validatePassword();
@@ -64,7 +66,7 @@ public class CookRegistration extends AppCompatActivity {
                     String b = textInputPassword.getText().toString().trim();
                     a = a.replace(".",",");
                     System.out.println(a);
-                    firebaseDatabase.getReference().child("users").child(a).child("type").setValue("cook");
+                    firebaseDatabase.getReference().child("users").child(a).child("type").setValue("client");
                     firebaseDatabase.getReference().child("users").child(a).child("password").setValue(b);
                     firebaseDatabase.getReference().child("users").child(a).child("username").setValue(a);
 
@@ -120,33 +122,30 @@ public class CookRegistration extends AppCompatActivity {
 
         //DO STUFF HERE TO UPLOAD TO FIREBASE
 
-        //createCookAccount(para2, par2, ....);
 
+        //createClientAccount(para2, par2, ....);
 
     }
 
-
-    public boolean checkIfInCooksList(){
-        return true;
-    }
-
-
-    private void createCookAccount(String email, String firstName, String lastName, String password,  String address) {
+    private void createClientAccount(String email, String firstName, String lastName, String password,  String address, String creditCard) {
         // replace '.' with ',' for email
         email = email.replace('.', '.');
 
         // use email as username
         String userKey = email;
-        firebaseDatabase.getReference().child("users").child(userKey).child("type").setValue("cook");
+
+        firebaseDatabase.getReference().child("users").child(userKey).child("type").setValue("client");
         firebaseDatabase.getReference().child("users").child(userKey).child("first name").setValue(firstName);
         firebaseDatabase.getReference().child("users").child(userKey).child("last name").setValue(lastName);
         firebaseDatabase.getReference().child("users").child(userKey).child("passwrod").setValue(password);
         firebaseDatabase.getReference().child("users").child(userKey).child("address").setValue(address);
         firebaseDatabase.getReference().child("users").child(userKey).child("username").setValue(email);
 
+
+        // not sure of storing credit card info...
+        firebaseDatabase.getReference().child("users").child(userKey).child("credit card").setValue(creditCard);
+
     }
-
-
 
 
 
