@@ -101,15 +101,9 @@ public class MainLogin extends AppCompatActivity {
         Intent intent = new Intent(this, InitialWelcome.class);
         startActivity(intent);
     }
-    public void openSuccLoginPage(){
-        Intent intent = new Intent(this,SuccessfulLogin.class);
-        startActivity(intent);
-    }
 
-    public void openRegisterAsCookPage(){
-        Intent intent = new Intent(this,CookRegistration.class);
-        startActivity(intent);
-    }
+
+
     public void openAdminWelcomePage() {
         Intent intent = new Intent(this,AdminSuccessfulLogin.class);
         startActivity(intent);

@@ -55,28 +55,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".UserRegistration"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".SuccessfulLogin"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".MainLogin"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".CookRegistration"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
