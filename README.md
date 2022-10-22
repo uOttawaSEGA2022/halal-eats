@@ -1,12 +1,6 @@
-# project-group-21
-Group 21's Mealer App
+# Group 21's Mealer App
 
-Saba Saba
-Solin
+Repository for the SEG2105 Mealer App project.
 
-Fatmah
-
-Abdullah (solin not #1)
-
-Sophia
-Sophia again
+Group members:
+Abdullah, Fatmah, Saba, Sophia, Solin
