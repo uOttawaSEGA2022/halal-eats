@@ -56,11 +56,11 @@ public class InitialWelcome extends AppCompatActivity {
         startActivity(intent);
     }
     public void openRegisterAsCookPagePage(){
-        Intent intent = new Intent(this,CookRegistration.class);
+        Intent intent = new Intent(this,FinalCookRegistration.class);
         startActivity(intent);
     }
     public void openRegisterAsUserPagePage(){
-        Intent intent = new Intent(this,UserRegistration.class);
+        Intent intent = new Intent(this,FinalUserRegistration.class);
         startActivity(intent);
     }
 }

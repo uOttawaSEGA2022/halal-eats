@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClientRegistration">
+    tools:context=".FinalUserRegistration">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -162,12 +162,29 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/Register2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"
-            app:backgroundTint="#A799B7" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Back2Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:text="Home"
+                app:backgroundTint="#A799B7" />
+
+            <Button
+                android:id="@+id/Register2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                app:backgroundTint="#A799B7" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
