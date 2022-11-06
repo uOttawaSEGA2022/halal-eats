@@ -10,6 +10,7 @@ import android.widget.Button;
 public class AdminSuccessfulLogin extends AppCompatActivity {
 
     private Button returnHome;
+    private Button goToComplaints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,9 @@ public class AdminSuccessfulLogin extends AppCompatActivity {
         setContentView(R.layout.activity_admin_successful_login);
 
         returnHome = (Button) findViewById(R.id.adminSuccessButton);
+        goToComplaints = (Button) findViewById(R.id.viewComplaintsAdmin);
+
+
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,7 +28,19 @@ public class AdminSuccessfulLogin extends AppCompatActivity {
             }
         });
 
+        goToComplaints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdminViewComplaintsPage();
+            }
+        });
 
+
+    }
+
+    public void openAdminViewComplaintsPage(){
+        Intent intent = new Intent(this, AdminViewComplaintsPage.class);
+        startActivity(intent);
     }
 
 

@@ -22,5 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LogOff" />
+
+        <Button
+            android:id="@+id/viewComplaintsAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIEW COMPLAINTS" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
