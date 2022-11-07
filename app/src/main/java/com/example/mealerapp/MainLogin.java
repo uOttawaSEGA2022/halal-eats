@@ -29,6 +29,7 @@ public class MainLogin extends AppCompatActivity {
     private Button login;
     private EditText textInputEmail;
     private EditText textInputPassword;
+    private String susLiftedDate;
 
 
    // DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -77,12 +78,6 @@ public class MainLogin extends AppCompatActivity {
                                         openCookWelcomePage();
                                     } else if (!suspensionStatus.equals("p")) {
 
-                                      /*  String currentDate = java.time.LocalDate.now().toString();
-                                        String[] splitCurrentDate = currentDate.split("-");
-                                        int currentYear = Integer.parseInt(splitCurrentDate[0]);
-                                        int currentMonth = Integer.parseInt(splitCurrentDate[1]);
-                                        int currentDay = Integer.parseInt(splitCurrentDate[2]);*/
-
                                         Date now = new Date();
                                         int currentYear = now.getYear();
                                         int currentMonth = now.getMonth();
@@ -96,8 +91,11 @@ public class MainLogin extends AppCompatActivity {
                                         if (susYear > currentYear || (susYear == currentYear && susMonth > currentMonth)
                                                         || susYear == currentYear && susMonth == currentMonth && susDay > currentDay) {
 
-                                            String susLiftedDate = susYear + "/" + susMonth + "/" + susDay;
-                                            openTempSusPage(susLiftedDate);
+                                            susYear += 1900;
+                                            susMonth += 1;
+                                            susLiftedDate = susYear + "/" + susMonth + "/" + susDay;
+                                            openTempSusPage();
+
 
                                         } else {
 
@@ -162,9 +160,12 @@ public class MainLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openTempSusPage(String susLiftedDate) {
-       return;
-    }
+    public void openTempSusPage() {
+        Intent intent = new Intent(this, TemporarilySuspended.class);
+        intent.putExtra("Date", susLiftedDate);
+        startActivity(intent);
 
+
+    }
 
 }
