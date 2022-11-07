@@ -17,6 +17,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 //import com.google.firebase.referencecode.database.models.Post;
 //import com.google.firebase.referencecode.database.models.User;
 
@@ -63,17 +66,51 @@ public class MainLogin extends AppCompatActivity {
 
                             String userType = snapshot.child(emailWithCommas).child("type").getValue().toString();
                             if (passwordFromDB.equals(textInputPassword.getText().toString().trim())) {
-                                // go to next activity page (show welcome message)
-                                // openRegisterAsCookPage is a placeholder method for openAdminWelcomePage()
-                                // go to next activity page (show welcome message)
-                                // openRegisterAsCookPage is a placeholder method for openAdminWelcomePage()
-                                // openRegisterAsCookPage();
+
                                 if (userType.equals("admin")) {
                                      openAdminWelcomePage();
                                 } else if (userType.equals("client")) {
                                      openClientWelcomePage();
                                 } else {
-                                     openCookWelcomePage();
+                                    String suspensionStatus = snapshot.child(emailWithCommas).child("suspensionStatus").getValue().toString();
+                                    if (suspensionStatus.equals("null")) {
+                                        openCookWelcomePage();
+                                    } else if (!suspensionStatus.equals("p")) {
+
+                                      /*  String currentDate = java.time.LocalDate.now().toString();
+                                        String[] splitCurrentDate = currentDate.split("-");
+                                        int currentYear = Integer.parseInt(splitCurrentDate[0]);
+                                        int currentMonth = Integer.parseInt(splitCurrentDate[1]);
+                                        int currentDay = Integer.parseInt(splitCurrentDate[2]);*/
+
+                                        Date now = new Date();
+                                        int currentYear = now.getYear();
+                                        int currentMonth = now.getMonth();
+                                        int currentDay = now.getDate();
+
+                                        String[] splitSuspensionDate =  suspensionStatus.split("-");
+                                        int susYear = Integer.parseInt(splitSuspensionDate[0]) - 1900 ;
+                                        int susMonth =Integer.parseInt(splitSuspensionDate[1]) - 1 ;
+                                        int susDay = Integer.parseInt(splitSuspensionDate[2]);
+
+                                        if (susYear > currentYear || (susYear == currentYear && susMonth > currentMonth)
+                                                        || susYear == currentYear && susMonth == currentMonth && susDay > currentDay) {
+
+                                            String susLiftedDate = susYear + "/" + susMonth + "/" + susDay;
+                                            openTempSusPage(susLiftedDate);
+
+                                        } else {
+
+                                            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                            firebaseDatabase.getReference().child("users").child(emailWithCommas).child("suspensionStatus").setValue("null");
+                                            openCookWelcomePage();
+                                        }
+
+                                    } else {
+                                        
+                                        openPermSusPage();
+                                    }
+
                                 }
 
                             }  else {
@@ -118,6 +155,15 @@ public class MainLogin extends AppCompatActivity {
     public void openCookWelcomePage() {
         Intent intent = new Intent (this, CookSuccessfulLogin.class);
         startActivity(intent);
+    }
+
+    public void openPermSusPage() {
+        Intent intent = new Intent (this, PermanentlySuspended.class);
+        startActivity(intent);
+    }
+
+    public void openTempSusPage(String susLiftedDate) {
+       return;
     }
 
 
