@@ -27,9 +27,10 @@ public class MainLogin extends AppCompatActivity {
 
     private Button returnHome;
     private Button login;
-    private EditText textInputEmail;
+    private EditText textInputEmail; // public to pass it to other activities
     private EditText textInputPassword;
     private String susLiftedDate;
+    public static String emailWithCommas;
 
 
    // DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -54,7 +55,7 @@ public class MainLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // replace '.' with ',' in emailhhjhj
-                String emailWithCommas = textInputEmail.getText().toString().trim().replace(".", ",");
+                emailWithCommas = textInputEmail.getText().toString().trim().replace(".", ",");
 
                 // verifying if email exists and if password is correct
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");

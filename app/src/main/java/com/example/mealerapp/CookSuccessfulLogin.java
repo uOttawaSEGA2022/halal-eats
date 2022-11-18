@@ -25,10 +25,25 @@ public class CookSuccessfulLogin extends AppCompatActivity {
             }
         });
 
+        returnHome = (Button) findViewById(R.id.button11);
+
+        returnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddOffered();
+            }
+        });
+
     }
 
     public void openHomePage(){
         Intent intent = new Intent(this, InitialWelcome.class);
         startActivity(intent);
+    }
+    public void openAddOffered(){
+        Intent intent = new Intent(this, AddMealToOfferedMenu.class);
+        //intent.putExtra("User", email); // pass email to AddMealToOfferedMenu
+        startActivity(intent);
+
     }
 }
