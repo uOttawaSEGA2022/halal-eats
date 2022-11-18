@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,10 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
     ArrayList<String> menu = new ArrayList<>();
     String selcetion;
 
-    private Button returnHome;
+
+    private Button addMeal;
+    private Button removeMeal;
+
 //List<String> names;
 
     @Override
@@ -42,7 +46,8 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
 
         // MainLogin e = new MainLogin();
         String email =  MainLogin.emailWithCommas;
-       // MainLogin.email
+         TextView textView=(TextView)findViewById(R.id.textView5);
+        // MainLogin.email
 
         spinner = (Spinner) findViewById (R.id.spinner);
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
@@ -51,41 +56,38 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
 
 
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
-            for (DataSnapshot item : dataSnapshot.getChildren()) {
-                //String spinnerName = chilSnapshot.child("username").getValue(String.class);
-                //names.add(spinnerName);
+                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                    //String spinnerName = chilSnapshot.child("username").getValue(String.class);
+                    //names.add(spinnerName);
 
-                //String spinnerComplaint = item.child(email).child("menu").getValue(String.class);
-                String spinnerComplaint = item.getKey().toString();
+                    //String spinnerComplaint = item.child(email).child("menu").getValue(String.class);
+                    String spinnerComplaint = item.getKey().toString();
 
-                menu.add(spinnerComplaint);
+                    menu.add(spinnerComplaint);
+
+
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddMealToOfferedMenu.this, android.R.layout.simple_spinner_dropdown_item, menu);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(arrayAdapter);
+
 
 
             }
 
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddMealToOfferedMenu.this, android.R.layout.simple_spinner_dropdown_item, menu);
-            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(arrayAdapter);
+
+            @Override
+            public void onCancelled (@NonNull DatabaseError error){
+
+            }
+
+        });
 
 
+        addMeal = (Button) findViewById(R.id.button4);
 
-        }
-
-
-        @Override
-        public void onCancelled (@NonNull DatabaseError error){
-
-        }
-
-    });
-
-        /*
-         * add a meal to the offered menu
-         * */
-
-        returnHome = (Button) findViewById(R.id.button4);
-
-        returnHome.setOnClickListener(new View.OnClickListener() {
+        addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selcetion = spinner.getSelectedItem().toString();
@@ -93,23 +95,27 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
                 ref.child(email).child("menu").child(selcetion).setValue(true);
 
+                textView.setText("You added  '"+ selcetion +"'  to the offered menu");
+
 
             }
         });
 
         /*
-        * remove a meal from the offered menu
-        * */
+         * remove a meal from the offered menu
+         *
+         * */
+        removeMeal = (Button) findViewById(R.id.button5);
 
-        returnHome = (Button) findViewById(R.id.button5);
-
-        returnHome.setOnClickListener(new View.OnClickListener() {
+        removeMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selcetion = spinner.getSelectedItem().toString();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
                 ref.child(email).child("menu").child(selcetion).setValue(false);
+
+                textView.setText("You removed  '"+ selcetion +"'  from the offered menu");
 
 
             }
@@ -119,3 +125,4 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
 
     }
 }
+

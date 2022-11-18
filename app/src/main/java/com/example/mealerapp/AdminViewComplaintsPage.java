@@ -30,12 +30,13 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
 public class AdminViewComplaintsPage extends AppCompatActivity {
 
-
+    Button showbutton;
     Spinner spinner;
     DatabaseReference databaseReference;
     ArrayList<String> complaints = new ArrayList<>();
@@ -48,18 +49,27 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
         setContentView(R.layout.activity_admin_view_complaints_page);
 
 
-
+        showbutton = (Button)findViewById(R.id.show);
         spinner = (Spinner) findViewById (R.id.spinner);
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        showbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String item = spinner.getSelectedItem().toString();
+                Toast.makeText(AdminViewComplaintsPage.this, item, Toast.LENGTH_SHORT).show();
+            }
+        });
         databaseReference.child("complaints").addValueEventListener(new ValueEventListener() {
+
+
 
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     //String spinnerName = chilSnapshot.child("username").getValue(String.class);
                     //names.add(spinnerName);
 
-                   // String spinnerComplaint = item.child("complaint").getValue(String.class);
-                     String spinnerComplaint = item.getValue().toString();
+                    // String spinnerComplaint = item.child("complaint").getValue(String.class);
+                    String spinnerComplaint = item.getValue().toString();
 
                     complaints.add(spinnerComplaint);
 
@@ -77,6 +87,8 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
             public void onCancelled (@NonNull DatabaseError error){
 
             }
+
+
 
         });
     }
