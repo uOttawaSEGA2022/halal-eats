@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddMealToOfferedMenu">
+    tools:context=".EditOfferedMenu">
 
 
     <TableLayout
@@ -33,26 +33,34 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="10dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Add" />
-
 
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="10dp"
-            android:layout_height="50dp"
-            android:text="Remove" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remove"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text= ""
+            android:text=""
             android:textSize="20sp" />
 
+        <Button
+            android:id="@+id/goHomePage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Home" />
+
     </TableLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

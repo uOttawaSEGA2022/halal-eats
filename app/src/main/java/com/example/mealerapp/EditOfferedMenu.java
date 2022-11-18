@@ -2,19 +2,16 @@ package com.example.mealerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
@@ -22,16 +19,18 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import android.widget.Spinner;
 
 
-public class AddMealToOfferedMenu extends AppCompatActivity {
+public class EditOfferedMenu extends AppCompatActivity {
     Spinner spinner;
     DatabaseReference databaseReference;
+
     ArrayList<String> menu = new ArrayList<>();
-    String selcetion;
+    ArrayList<String> menuIndex = new ArrayList<>();
+
+    String selection;
 
 
     private Button addMeal;
@@ -56,19 +55,18 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
 
 
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
+                menu.clear();
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    //String spinnerName = chilSnapshot.child("username").getValue(String.class);
-                    //names.add(spinnerName);
-
-                    //String spinnerComplaint = item.child(email).child("menu").getValue(String.class);
                     String spinnerComplaint = item.getKey().toString();
+                    String index = item.getValue().toString();
 
                     menu.add(spinnerComplaint);
+                    menuIndex.add(index);
 
 
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AddMealToOfferedMenu.this, android.R.layout.simple_spinner_dropdown_item, menu);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(EditOfferedMenu.this, android.R.layout.simple_spinner_dropdown_item, menu);
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(arrayAdapter);
 
@@ -90,12 +88,12 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
         addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selcetion = spinner.getSelectedItem().toString();
+                selection = spinner.getSelectedItem().toString();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                ref.child(email).child("menu").child(selcetion).setValue(true);
+                ref.child(email).child("menu").child(selection).setValue(true);
 
-                textView.setText("You added  '"+ selcetion +"'  to the offered menu");
+                textView.setText("You added  '"+ selection +"'  to the offered menu");
 
 
             }
@@ -110,19 +108,50 @@ public class AddMealToOfferedMenu extends AppCompatActivity {
         removeMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selcetion = spinner.getSelectedItem().toString();
+                selection = spinner.getSelectedItem().toString();
+                int indexOfMeal = menu.indexOf(selection);
+                String exist = menuIndex.get(indexOfMeal);
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                ref.child(email).child("menu").child(selcetion).setValue(false);
+                if (exist == "true") {
+                    databaseReference.child(email).child("menu").child(selection).setValue(false);
+                    textView.setText("You removed  '" + selection + "'  from the offered menu");
+                    exist = "false";
+                }
 
-                textView.setText("You removed  '"+ selcetion +"'  from the offered menu");
+                else{
+                    removeMeal.setError("Meal does not exist in the offered menu");
+                }
 
 
+
+
+
+
+
+
+            }
+        });
+
+        /*
+        * home button
+        * */
+        Button returnHome = (Button) findViewById(R.id.goHomePage);
+        returnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHomePage();
             }
         });
 
 
 
     }
+
+
+    public void openHomePage(){
+        Intent intent = new Intent(this, CookSuccessfulLogin.class);
+        startActivity(intent);
+    }
 }
+
 
