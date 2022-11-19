@@ -9,24 +9,53 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            app:srcCompat="@drawable/recipe" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/FirstNmeTxt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You signed in as an 'Admin'" />
+            android:gravity="center"
+            android:text="You are signed in as an Admin!"
+            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/adminSuccessButton"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LogOff" />
+            android:layout_height="10dp" />
 
-        <Button
-            android:id="@+id/viewComplaintsAdmin"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="VIEW COMPLAINTS" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/adminSuccessButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LogOff"
+                android:translationX="-10dp"
+                app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/viewComplaintsAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIEW COMPLAINTS"
+                android:translationX="10dp"
+                app:backgroundTint="#85ae8b" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

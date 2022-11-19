@@ -12,13 +12,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/addedMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="You signed in as a 'Cook'" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/addButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LogOff" />

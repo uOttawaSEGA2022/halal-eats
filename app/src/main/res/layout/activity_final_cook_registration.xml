@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mealer App"
-            android:textColor="#A799B7"
+            android:textColor="#85ae8b"
             android:textSize="30dp" />
 
         <TextView
@@ -118,14 +118,14 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:text="Home"
-                app:backgroundTint="#A799B7" />
+                app:backgroundTint="#85ae8b" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
-                app:backgroundTint="#A799B7" />
+                app:backgroundTint="#85ae8b" />
         </LinearLayout>
 
     </LinearLayout>
