@@ -16,7 +16,7 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_successful_login);
 
-        returnHome = (Button) findViewById(R.id.removeButton);
+        returnHome = (Button) findViewById(R.id.button5);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override

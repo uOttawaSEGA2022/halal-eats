@@ -16,7 +16,7 @@ public class CookSuccessfulLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cook_successful_login);
 
-        returnHome = (Button) findViewById(R.id.addButton);
+        returnHome = (Button) findViewById(R.id.button4);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class CookSuccessfulLogin extends AppCompatActivity {
     }
 
     public void openEditMenu(){
-        Intent intent = new Intent(this, EditOfferedMenu.class);
+        Intent intent = new Intent(this, EditMenu.class);
 
         startActivity(intent);
 

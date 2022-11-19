@@ -45,7 +45,7 @@ public class EditOfferedMenu extends AppCompatActivity {
 
         // MainLogin e = new MainLogin();
         String email =  MainLogin.emailWithCommas;
-         TextView textView = (TextView)findViewById(R.id.addedMessage);
+         TextView textView = (TextView)findViewById(R.id.textView5);
         // MainLogin.email
 
         spinner = (Spinner) findViewById (R.id.spinner);
@@ -83,7 +83,7 @@ public class EditOfferedMenu extends AppCompatActivity {
         });
 
 
-        addMeal = (Button) findViewById(R.id.addButton);
+        addMeal = (Button) findViewById(R.id.button4);
 
         addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +103,7 @@ public class EditOfferedMenu extends AppCompatActivity {
          * remove a meal from the offered menu
          *
          * */
-        removeMeal = (Button) findViewById(R.id.removeButton);
+        removeMeal = (Button) findViewById(R.id.button5);
 
         removeMeal.setOnClickListener(new View.OnClickListener() {
             @Override
