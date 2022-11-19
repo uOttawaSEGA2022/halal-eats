@@ -10,20 +10,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/warning" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/permSuspended"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="You are permanently suspended. You can no longer use HalalEats."
-            android:textColor="#DD0808"
-            android:textSize="34sp" />
+            android:textColor="#7B2D26"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <Button
             android:id="@+id/log_off"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log Off" />
+            android:gravity="center"
+            android:text="Log Off"
+            app:backgroundTint="#7B2D26" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
