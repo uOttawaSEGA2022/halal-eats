@@ -9,38 +9,65 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <Space
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:srcCompat="@drawable/chef" />
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="200dp" />
+            android:layout_height="wrap_content"
+            android:text="Halal Eats"
+            android:textColor="#85AE8B"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="238dp"
-            android:layout_height="68dp"
-            android:layout_gravity="center"
-            android:text="Welcome! What would you like to do?" />
-
-        <Button
-            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Login" />
+            android:text="Welcome! What would you like to do?"
+            android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/regAsCook"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Register As Cook" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/registerAsUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Register As User" />
+            <Button
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Login"
+                app:backgroundTint="#85AE8B" />
+
+            <Button
+                android:id="@+id/regAsCook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Register As Cook"
+                app:backgroundTint="#85AE8B" />
+
+            <Button
+                android:id="@+id/registerAsUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Register As User"
+                app:backgroundTint="#85AE8B" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
