@@ -13,12 +13,25 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/MealerTitle"
-            android:layout_width="wrap_content"
+            android:id="@+id/wlcm"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mealer App"
+            android:gravity="center"
+            android:text="Welcome to Mealer App!"
             android:textColor="#85ae8b"
-            android:textSize="30dp" />
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="You are registering as a cook"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/FirstNameText"
