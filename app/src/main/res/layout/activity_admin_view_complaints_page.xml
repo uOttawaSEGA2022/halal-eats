@@ -6,66 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".AdminViewComplaintsPage">
 
-    <TableLayout
-        android:id="@+id/tableLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-76dp">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <TableRow
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complaints:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+        <Button
+            android:id="@+id/show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show selected complaint" />
+
+        <Space
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <EditText
+            android:id="@+id/editTextDate"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Please enter suspension date (YYYY-MM-DD)"
+            android:inputType="date" />
 
-            <TextView
-                android:id="@+id/menuText"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/dismiss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Complaints:"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:text="dismiss" />
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="300dp"
+            <Button
+                android:id="@+id/tmpsus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dialog" />
+                android:text="TmpSuspend" />
 
-        </TableRow>
+            <Button
+                android:id="@+id/fire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fire Cook" />
+        </LinearLayout>
 
-    </TableLayout>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/dismiss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="dismiss"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/tmpsus"
-        android:layout_width="142dp"
-        android:layout_height="37dp"
-        android:text="TmpSuspend"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <Button
-        android:id="@+id/fire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fire Cook"
-        app:layout_constraintBottom_toBottomOf="@+id/tmpsus"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/show"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="show selected complaint"
-        app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

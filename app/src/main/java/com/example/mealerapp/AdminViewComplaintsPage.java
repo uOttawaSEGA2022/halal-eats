@@ -30,13 +30,15 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 public class AdminViewComplaintsPage extends AppCompatActivity {
 
-    Button showbutton;
+    Button showbutton, dismiss, tempSuspend, fire;
+    EditText date;
     Spinner spinner;
     DatabaseReference databaseReference;
     ArrayList<String> complaints = new ArrayList<>();
@@ -50,6 +52,12 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
 
 
         showbutton = (Button)findViewById(R.id.show);
+
+        dismiss = (Button)findViewById(R.id.dismiss);
+        tempSuspend = (Button)findViewById(R.id.tmpsus);
+        fire = (Button)findViewById(R.id.fire);
+
+
         spinner = (Spinner) findViewById (R.id.spinner);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         showbutton.setOnClickListener(new View.OnClickListener() {
@@ -59,16 +67,65 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
                 Toast.makeText(AdminViewComplaintsPage.this, item, Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        dismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String item = spinner.getSelectedItem().toString();
+
+                String [] listOfString = item.split(",");
+                String [] listOfString2 = listOfString[0].split("=");
+                String username = listOfString2[1] +"," + listOfString[1];
+
+
+                databaseReference.child("complaints").child(username).removeValue();
+
+
+            }
+        });
+
+        tempSuspend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String item = spinner.getSelectedItem().toString();
+
+                String [] listOfString = item.split(",");
+                String [] listOfString2 = listOfString[0].split("=");
+                String username = listOfString2[1] +"," + listOfString[1];
+
+
+                date = (EditText)findViewById(R.id.editTextDate);
+
+                databaseReference.child("users").child(username).child("suspensionStatus").setValue("2023-02-13");
+                databaseReference.child("complaints").child(username).removeValue();
+
+
+            }
+        });
+
+        fire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String item = spinner.getSelectedItem().toString();
+
+                String [] listOfString = item.split(",");
+                String [] listOfString2 = listOfString[0].split("=");
+                String username = listOfString2[1] +"," + listOfString[1];
+
+                databaseReference.child("users").child(username).child("suspensionStatus").setValue("p");
+                databaseReference.child("complaints").child(username).removeValue();
+
+            }
+        });
         databaseReference.child("complaints").addValueEventListener(new ValueEventListener() {
 
 
 
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
+                complaints.clear();
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    //String spinnerName = chilSnapshot.child("username").getValue(String.class);
-                    //names.add(spinnerName);
-
-                    // String spinnerComplaint = item.child("complaint").getValue(String.class);
                     String spinnerComplaint = item.getValue().toString();
 
                     complaints.add(spinnerComplaint);
