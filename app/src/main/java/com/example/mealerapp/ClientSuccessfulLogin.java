@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ClientSuccessfulLogin extends AppCompatActivity {
 
@@ -14,6 +15,7 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
     private Button viewstatus;
     private Button submitcomplaint;
     private Button ratepreviousorder;
+    private Button viewnotification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
         viewstatus = (Button) findViewById(R.id.viewstatus);
         submitcomplaint = (Button) findViewById(R.id.submitcomplaint);
         ratepreviousorder = (Button) findViewById(R.id.rateprevorder);
+        viewnotification = (Button) findViewById(R.id.viewnotification);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +57,12 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openRate();
+            }
+        });
+        viewnotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ClientSuccessfulLogin.this, "Your Last Order was + approved status(fix later)", Toast.LENGTH_SHORT).show();
             }
         });
 
