@@ -72,7 +72,7 @@ public class FinalCookRegistration extends AppCompatActivity {
                 validateEmail();
                 validatePassword();
 
-                // replace '.' with ',' in emailhhjhj
+                // replace '.' with ',' in email
                 String emailWithCommas = textInputEmail.getText().toString().trim().replace(".", ",");
 
                 // verifying if email exists and if password is correct
@@ -91,18 +91,27 @@ public class FinalCookRegistration extends AppCompatActivity {
                         } else {
                             // create the account
                             if (validateEmail() && validatePassword() && validateAll()){
+
                                 String a = textInputEmail.getText().toString().trim();
                                 String b = textInputPassword.getText().toString().trim();
+                                String c = firstName.getText().toString().trim();
+                                String d = lastName.getText().toString().trim();
+                                String e = desc.getText().toString().trim();
+                                String f = address.getText().toString().trim();
+
                                 a = a.replace(".",",");
-                                System.out.println(a);
+
                                 firebaseDatabase.getReference().child("users").child(a).child("type").setValue("cook");
                                 firebaseDatabase.getReference().child("users").child(a).child("password").setValue(b);
                                 firebaseDatabase.getReference().child("users").child(a).child("username").setValue(a);
-
                                 firebaseDatabase.getReference().child("users").child(a).child("suspensionStatus").setValue("null");
-
                                 firebaseDatabase.getReference().child("users").child(a).child("menu").setValue("");
-                                firebaseDatabase.getReference().child("users").child(a).child("menu").child("pasta").setValue(false);
+                                firebaseDatabase.getReference().child("users").child(a).child("firstname").setValue(c);
+                                firebaseDatabase.getReference().child("users").child(a).child("lastname").setValue(d);
+                                firebaseDatabase.getReference().child("users").child(a).child("desc").setValue(e);
+                                firebaseDatabase.getReference().child("users").child(a).child("address").setValue(f);
+                                firebaseDatabase.getReference().child("users").child(a).child("rating").setValue("0,0");
+
                                 
 
 

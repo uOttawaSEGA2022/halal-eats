@@ -63,6 +63,18 @@
                 android:text="Edit Offered Menu"
                 android:textSize="16sp"
                 app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/vieworders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="view order requests" />
+
+            <Button
+                android:id="@+id/viewprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="view your profile" />
         </LinearLayout>
 
     </LinearLayout>
