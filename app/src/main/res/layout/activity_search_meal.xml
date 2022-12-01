@@ -17,6 +17,212 @@
             android:layout_height="66dp"
             android:text="return to your homepage" />
 
+        <EditText
+            android:id="@+id/mealNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter meal" />
+        <Button
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:translationX="-10dp"
+            app:backgroundTint="#85ae8b" />
+
+
+
+
+        <TextView
+            android:id="@+id/nameOfMeal0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayInfo0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= ""
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/addMeal0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:translationX="-10dp"
+            android:visibility="invisible"
+            app:backgroundTint="#85ae8b" />
+
+        <View
+            android:id="@+id/divider0"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+
+
+        <TextView
+            android:id="@+id/nameOfMeal1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayInfo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/addMeal1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:translationX="-10dp"
+            android:visibility="invisible"
+            app:backgroundTint="#85ae8b" />
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+
+
+        <TextView
+            android:id="@+id/nameOfMeal2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayInfo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= ""
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/addMeal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:visibility="invisible"
+            android:translationX="-10dp"
+            app:backgroundTint="#85ae8b" />
+
+
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/nameOfMeal3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayInfo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= ""
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/addMeal3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:translationX="-10dp"
+            android:visibility="invisible"
+            app:backgroundTint="#85ae8b" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+
+        <TextView
+            android:id="@+id/nameOfMeal4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayInfo4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= ""
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/addMeal4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:visibility="invisible"
+            android:translationX="-10dp"
+            app:backgroundTint="#85ae8b" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+
+        <TextView
+            android:id="@+id/nameOfMeal5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= " "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/displayInfo5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= ""
+
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/addMeal5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:translationX="-10dp"
+            android:visibility="invisible"
+            app:backgroundTint="#85ae8b" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+
+
+
+
+
+
     </LinearLayout>
 
 </RelativeLayout>
