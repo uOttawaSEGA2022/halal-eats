@@ -15,9 +15,32 @@
             android:id="@+id/mealNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter meal" />
+            android:hint="Enter meal name" />
 
 
+        <EditText
+            android:id="@+id/mealCuisineInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter meal cuisine" />
+
+        <EditText
+            android:id="@+id/mealDescInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter meal description" />
+
+        <EditText
+            android:id="@+id/mealTypeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter meal type" />
+
+        <EditText
+            android:id="@+id/priceInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter price" />
 
         <Button
             android:id="@+id/addMeal"

@@ -27,7 +27,7 @@ import android.widget.Spinner;
 public class EditMenu extends AppCompatActivity {
     //private String mealName;
     DatabaseReference databaseReference;
-    EditText mealNameInput;
+    EditText mealNameInput, mealCuisineInput, mealTypeInput, mealDescInput, priceInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,11 @@ public class EditMenu extends AppCompatActivity {
 
         // get meal name (capture text)
         EditText mealNameInput = (EditText) findViewById(R.id.mealNameInput);
+        EditText mealCuisineInput = (EditText) findViewById(R.id.mealCuisineInput);
+        EditText mealTypeInput = (EditText) findViewById(R.id.mealTypeInput);
+        EditText mealDescInput = (EditText) findViewById(R.id.mealDescInput);
+        EditText priceInput = (EditText) findViewById(R.id.priceInput);
+
 
 
         ArrayList<String> menu = new ArrayList<>();
@@ -58,6 +63,11 @@ public class EditMenu extends AppCompatActivity {
                 // !!!!!!!!!!!!!!!!!!! make sure they can't add empty meal //
 
                 String mealName = mealNameInput.getText().toString();
+                String mealType = mealTypeInput.getText().toString();
+                String mealCuisine = mealCuisineInput.getText().toString();
+                String mealDesc = mealDescInput.getText().toString();
+                String price = priceInput.getText().toString().replace(".", ",").replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
+
                 if (!mealName.isEmpty()) {
                     databaseReference = FirebaseDatabase.getInstance().getReference("users");
                     databaseReference.child(email).child("menu").addValueEventListener(new ValueEventListener() {
@@ -90,8 +100,18 @@ public class EditMenu extends AppCompatActivity {
                         mealNameInput.setError("Meal already exists in menu");
 
                     } else {
-                        databaseReference.child(email).child("menu").child(mealName).setValue(false);
+                        databaseReference.child(email).child("menu").child(mealName).child("offered").setValue(false);
+                        databaseReference.child(email).child("menu").child(mealName).child("mealname").setValue(mealName);
+                        databaseReference.child(email).child("menu").child(mealName).child("mealtype").setValue(mealType);
+                        databaseReference.child(email).child("menu").child(mealName).child("mealcuisine").setValue(mealCuisine);
+                        databaseReference.child(email).child("menu").child(mealName).child("mealdesc").setValue(mealDesc);
+                        databaseReference.child(email).child("menu").child(mealName).child("price").setValue(price);
+
                         mealNameInput.getText().clear();
+                        mealCuisineInput.getText().clear();
+                        mealTypeInput.getText().clear();
+                        mealDescInput.getText().clear();
+                        priceInput.getText().clear();
                     }
 
 
