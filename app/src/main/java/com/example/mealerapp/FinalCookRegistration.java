@@ -110,7 +110,8 @@ public class FinalCookRegistration extends AppCompatActivity {
                                 firebaseDatabase.getReference().child("users").child(a).child("lastname").setValue(d);
                                 firebaseDatabase.getReference().child("users").child(a).child("desc").setValue(e);
                                 firebaseDatabase.getReference().child("users").child(a).child("address").setValue(f);
-                                firebaseDatabase.getReference().child("users").child(a).child("rating").setValue("0,0");
+                                firebaseDatabase.getReference().child("users").child(a).child("rating").setValue("No Ratings Yet");
+                                firebaseDatabase.getReference().child("users").child(a).child("mealsSold").setValue("0");
 
                                 
 

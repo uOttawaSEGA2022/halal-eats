@@ -17,7 +17,6 @@ public class CookViewOrders extends AppCompatActivity {
         setContentView(R.layout.activity_cook_view_orders);
 
 
-
         returnHome = (Button) findViewById(R.id.returntohome);
 
         returnHome.setOnClickListener(new View.OnClickListener() {

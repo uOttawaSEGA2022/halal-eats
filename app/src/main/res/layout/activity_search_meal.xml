@@ -51,7 +51,7 @@
             android:id="@+id/addMeal0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Click to Submit Purchase Request"
             android:translationX="-10dp"
             android:visibility="invisible"
             app:backgroundTint="#85ae8b" />
@@ -82,7 +82,7 @@
             android:id="@+id/addMeal1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Click to Submit Purchase Request"
             android:translationX="-10dp"
             android:visibility="invisible"
             app:backgroundTint="#85ae8b" />
@@ -114,9 +114,9 @@
             android:id="@+id/addMeal2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
-            android:visibility="invisible"
+            android:text="Click to Submit Purchase Request"
             android:translationX="-10dp"
+            android:visibility="invisible"
             app:backgroundTint="#85ae8b" />
 
 
@@ -145,7 +145,7 @@
             android:id="@+id/addMeal3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Click to Submit Purchase Request"
             android:translationX="-10dp"
             android:visibility="invisible"
             app:backgroundTint="#85ae8b" />
@@ -175,9 +175,9 @@
             android:id="@+id/addMeal4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
-            android:visibility="invisible"
+            android:text="Click to Submit Purchase Request"
             android:translationX="-10dp"
+            android:visibility="invisible"
             app:backgroundTint="#85ae8b" />
 
         <View
@@ -206,7 +206,7 @@
             android:id="@+id/addMeal5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add"
+            android:text="Click to Submit Purchase Request"
             android:translationX="-10dp"
             android:visibility="invisible"
             app:backgroundTint="#85ae8b" />
