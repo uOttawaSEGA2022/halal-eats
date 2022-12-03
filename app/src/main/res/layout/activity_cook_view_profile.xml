@@ -11,6 +11,48 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/cookfirstname"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="tobeautofilled" />
+
+        <TextView
+            android:id="@+id/cooklastname"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="tobeautofilled" />
+
+        <TextView
+            android:id="@+id/cookaddress"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="tobeautofilled" />
+
+        <TextView
+            android:id="@+id/cookpassword"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:text="tobeautofilled" />
+
+        <TextView
+            android:id="@+id/cookdescription"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="tobeautofilled" />
+
+        <TextView
+            android:id="@+id/cookrating"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:text="tobeautofilled" />
+
+        <TextView
+            android:id="@+id/cooknumberofmealssold"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="tobeautofilled" />
+
         <Button
             android:id="@+id/returnhome"
             android:layout_width="match_parent"
