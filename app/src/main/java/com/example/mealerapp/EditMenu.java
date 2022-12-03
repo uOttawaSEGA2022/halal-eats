@@ -101,10 +101,10 @@ public class EditMenu extends AppCompatActivity {
 
                     } else {
                         databaseReference.child(email).child("menu").child(mealName).child("offered").setValue(false);
-                        databaseReference.child(email).child("menu").child(mealName).child("mealname").setValue(mealName);
-                        databaseReference.child(email).child("menu").child(mealName).child("mealtype").setValue(mealType);
-                        databaseReference.child(email).child("menu").child(mealName).child("mealcuisine").setValue(mealCuisine);
-                        databaseReference.child(email).child("menu").child(mealName).child("mealdesc").setValue(mealDesc);
+                        databaseReference.child(email).child("menu").child(mealName).child("mealName").setValue(mealName);
+                        databaseReference.child(email).child("menu").child(mealName).child("mealType").setValue(mealType);
+                        databaseReference.child(email).child("menu").child(mealName).child("cuisine").setValue(mealCuisine);
+                        databaseReference.child(email).child("menu").child(mealName).child("desc").setValue(mealDesc);
                         databaseReference.child(email).child("menu").child(mealName).child("price").setValue(price);
 
                         mealNameInput.getText().clear();
