@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -58,10 +59,17 @@ public class EditOfferedMenu extends AppCompatActivity {
                 menu.clear();
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     String spinnerComplaint = item.getKey().toString();
-                    String index = item.getValue().toString();
+                    Log.e("key",spinnerComplaint);
+                    if (item.child("offered").getValue()!= null){
+                        Log.e("value ",item.child("offered").getValue().toString());
+                        String index = item.getValue().toString();
 
-                    menu.add(spinnerComplaint);
-                    menuIndex.add(index);
+                        menu.add(spinnerComplaint);
+                        menuIndex.add(index);
+
+                    }
+                    //Log.e("value ",item.child("offered").getValue().toString());
+                    //String index = item.getValue().toString();
 
 
                 }
@@ -91,7 +99,7 @@ public class EditOfferedMenu extends AppCompatActivity {
                 selection = spinner.getSelectedItem().toString();
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                ref.child(email).child("menu").child(selection).setValue(true);
+                ref.child(email).child("menu").child(selection).child("offered").setValue(true);
 
                 textView.setText("You added  '"+ selection +"'  to the offered menu");
 
@@ -112,21 +120,10 @@ public class EditOfferedMenu extends AppCompatActivity {
                 int indexOfMeal = menu.indexOf(selection);
                 String exist = menuIndex.get(indexOfMeal);
 
-                if (exist == "true") {
-                    databaseReference.child(email).child("menu").child(selection).setValue(false);
-                    textView.setText("You removed  '" + selection + "'  from the offered menu");
-                    exist = "false";
-                }
-
-                else{
-                    removeMeal.setError("Meal does not exist in the offered menu");
-                }
-
-
-
-
-
-
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                ref.child(email).child("menu").child(selection).child("offered").setValue(false);
+                textView.setText("You removed  '" + selection + "'  from the offered menu");
+                exist = "false";
 
 
             }
