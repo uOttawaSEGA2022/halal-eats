@@ -19,7 +19,7 @@
             android:id="@+id/imageView10"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            app:srcCompat="@drawable/reviews" />
+            app:srcCompat="@drawable/reviews"/>
 
         <Space
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
 
         <Spinner
             android:id="@+id/clientOrdersSpinner"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="50dp" />
 
         <EditText
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Enter a rating from 1-5"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"/>
 
         <Button
             android:id="@+id/submitRating"
