@@ -4,35 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".ViewOrderStatus">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/reviews"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
 
         <Spinner
             android:id="@+id/clientOrdersSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="71dp" />
+            android:layout_width="400dp"
+            android:layout_height="50dp" />
 
         <EditText
             android:id="@+id/rateTextbox"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Enter a rating from 1-5"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"/>
 
         <Button
             android:id="@+id/submitRating"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit Rating" />
+            android:text="Submit Rating"
+            app:backgroundTint="#85ae8b" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/rating" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <EditText
             android:id="@+id/complaintTextBox"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Write your complaint here"
@@ -40,14 +69,21 @@
 
         <Button
             android:id="@+id/submitComplaint"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit Complaint" />
+            android:text="Submit Complaint"
+            app:backgroundTint="#85ae8b" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="124dp" />
 
         <Button
             android:id="@+id/returntohomestatus"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="return to home" />
+            android:gravity="center"
+            android:text="return home"
+            app:backgroundTint="#85ae8b" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

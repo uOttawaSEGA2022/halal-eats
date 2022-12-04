@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".ClientSuccessfulLogin">
 
     <LinearLayout
@@ -24,54 +25,56 @@
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="You are signed in as a Client!"
+            android:textColor="#2C2C2C"
             android:textSize="18sp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
-        <Button
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="search meal" />
-
-        <Button
-            android:id="@+id/rateprevorder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="rate previous order" />
-
-        <Button
-            android:id="@+id/viewstatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="view order status" />
-
-        <Button
-            android:id="@+id/submitcomplaint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="submit complaint" />
-
-        <Button
-            android:id="@+id/button5"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="LogOff"
-            android:textSize="16sp"
-            app:backgroundTint="#85ae8b" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/viewnotification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="view notification" />
+            <Button
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="search meal"
+                android:textSize="15sp"
+                app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/viewstatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="orders"
+                android:textSize="15sp"
+                app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/viewnotification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="view notification"
+                android:textSize="15sp"
+                app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Log Off"
+                android:textSize="15sp"
+                app:backgroundTint="#85ae8b" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

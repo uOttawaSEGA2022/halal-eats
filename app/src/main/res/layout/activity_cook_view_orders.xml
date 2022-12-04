@@ -4,29 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".CookViewOrders">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/approveorder"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="approve order" />
+            android:gravity="center"
+            android:text="View orders"
+            android:textColor="#638A69"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/rejectorder"
+        <Spinner
+            android:id="@+id/cookOrdersSpinner"
+            android:layout_width="400dp"
+            android:layout_height="50dp" />
+
+        <Space
             android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="reject order" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/approveorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="approve order"
+                app:backgroundTint="#85ae8b" />
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/rejectorder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="reject order"
+                app:backgroundTint="#85ae8b" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
 
         <Button
             android:id="@+id/returntohome"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="return to home" />
+            android:text="return home"
+            app:backgroundTint="#85ae8b" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

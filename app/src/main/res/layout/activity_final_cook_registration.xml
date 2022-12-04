@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".FinalCookRegistration">
 
     <LinearLayout
@@ -12,14 +13,21 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/chef" />
+
         <TextView
             android:id="@+id/wlcm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Welcome to Mealer App!"
-            android:textColor="#85ae8b"
-            android:textSize="20sp" />
+            android:text="Welcome to Halal Eats!"
+            android:textColor="#638A69"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sub"
@@ -27,7 +35,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="You are registering as a cook"
-            android:textSize="16sp" />
+            android:textColor="#2C2C2C"
+            android:textSize="16sp"
+            android:textStyle="italic" />
 
         <Space
             android:layout_width="match_parent"
@@ -37,7 +47,8 @@
             android:id="@+id/FirstNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First Name" />
+            android:text="First Name"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/FirstNameField"
@@ -50,7 +61,8 @@
             android:id="@+id/LastNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Name" />
+            android:text="Last Name"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/LastNameField"
@@ -63,7 +75,8 @@
             android:id="@+id/EmailAddressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email Address" />
+            android:text="Email Address"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/EmailAddressField"
@@ -76,7 +89,8 @@
             android:id="@+id/PasswardText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:text="Password"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/PasswardField"
@@ -89,7 +103,8 @@
             android:id="@+id/AddressText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address" />
+            android:text="Address"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/AddressField"
@@ -102,7 +117,8 @@
             android:id="@+id/Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please describe yourself" />
+            android:text="Please describe yourself"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/DescField"
@@ -116,7 +132,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:text="Please upload a void check" />
+            android:text="Please upload a void check"
+            android:textColor="#2C2C2C" />
 
         <LinearLayout
             android:layout_width="wrap_content"

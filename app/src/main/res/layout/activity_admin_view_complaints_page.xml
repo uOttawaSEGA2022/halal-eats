@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".AdminViewComplaintsPage">
 
     <LinearLayout
@@ -16,58 +17,82 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Complaints:"
+            android:text="Complaints"
+            android:textColor="#638A69"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_width="400dp"
+            android:layout_height="30dp"
             android:spinnerMode="dialog" />
 
         <Button
             android:id="@+id/show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="show selected complaint" />
+            android:text="show selected complaint"
+            app:backgroundTint="#85ae8b" />
 
         <Space
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
         <EditText
             android:id="@+id/editTextDate"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:gravity="center"
             android:hint="Please enter suspension date (YYYY-MM-DD)"
             android:inputType="date" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="31dp" />
 
             <Button
                 android:id="@+id/dismiss"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="dismiss" />
+                android:text="dismiss"
+                app:backgroundTint="#85ae8b" />
 
             <Button
                 android:id="@+id/tmpsus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TmpSuspend" />
+                android:text="Temporarily Suspend"
+                app:backgroundTint="#85ae8b" />
 
             <Button
                 android:id="@+id/fire"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fire Cook" />
+                android:text="Fire Cook"
+                app:backgroundTint="#85ae8b" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="174dp" />
+
+            <Button
+                android:id="@+id/homeviewcomp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="home"
+                app:backgroundTint="#85ae8b" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
