@@ -46,7 +46,7 @@ public class EditOfferedMenu extends AppCompatActivity {
 
         // MainLogin e = new MainLogin();
         String email =  MainLogin.emailWithCommas;
-         TextView textView = (TextView)findViewById(R.id.textView5);
+        TextView textView = (TextView)findViewById(R.id.textView5);
         // MainLogin.email
 
         spinner = (Spinner) findViewById (R.id.spinner);

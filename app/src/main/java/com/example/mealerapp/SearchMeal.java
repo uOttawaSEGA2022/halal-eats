@@ -293,7 +293,7 @@ public class SearchMeal extends AppCompatActivity {
 
                                     // add cook info to list
                                     for (Chef chef : allChefs) {
-                                        Log.e("cook username: ", String.valueOf(chef.getUsername()));
+
                                         if (chef.getUsername().equalsIgnoreCase(user)) {
                                             txt = chef.getFirstname() + " " + chef.getLastname() + "  |  " + chef.getAddress() +
                                                     "  |  Rating: " + chef.getRating();

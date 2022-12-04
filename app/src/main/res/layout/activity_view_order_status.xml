@@ -16,6 +16,34 @@
             android:layout_width="match_parent"
             android:layout_height="71dp" />
 
+        <EditText
+            android:id="@+id/rateTextbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter a rating from 1-5"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/submitRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Rating" />
+
+        <EditText
+            android:id="@+id/complaintTextBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Write your complaint here"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/submitComplaint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Complaint" />
+
         <Button
             android:id="@+id/returntohomestatus"
             android:layout_width="match_parent"
