@@ -77,7 +77,7 @@ public class FinalUserRegistration extends AppCompatActivity {
                 validateEmail();
                 validatePassword();
 
-                // replace '.' with ',' in emailhhjhj
+                // replace '.' with ',' in email
                 String emailWithCommas = textInputEmail.getText().toString().trim().replace(".", ",");
 
                 // verifying if email exists and if password is correct
@@ -103,6 +103,11 @@ public class FinalUserRegistration extends AppCompatActivity {
                                 firebaseDatabase.getReference().child("users").child(a).child("type").setValue("client");
                                 firebaseDatabase.getReference().child("users").child(a).child("password").setValue(b);
                                 firebaseDatabase.getReference().child("users").child(a).child("username").setValue(a);
+
+                                // *******  added following lines dec 3 ******* //
+                                firebaseDatabase.getReference().child("users").child(a).child("numOrders").setValue(0);
+                                // bandaid solution
+                                firebaseDatabase.getReference().child("users").child(a).child("orders").child("null").setValue(0);
 
 
 
