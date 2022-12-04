@@ -52,7 +52,7 @@
             <Button
                 android:id="@+id/addMeal0"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:text="Click to Submit Purchase Request"
                 android:visibility="invisible"
                 app:backgroundTint="#85ae8b" />
@@ -108,7 +108,7 @@
             <Button
                 android:id="@+id/addMeal2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:text="Click to Submit Purchase Request"
                 android:visibility="invisible"
                 app:backgroundTint="#85ae8b" />
@@ -136,7 +136,7 @@
             <Button
                 android:id="@+id/addMeal3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:text="Click to Submit Purchase Request"
                 android:visibility="invisible"
                 app:backgroundTint="#85ae8b" />
@@ -164,7 +164,7 @@
             <Button
                 android:id="@+id/addMeal4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:text="Click to Submit Purchase Request"
                 android:visibility="invisible"
                 app:backgroundTint="#85ae8b" />
@@ -193,7 +193,7 @@
             <Button
                 android:id="@+id/addMeal5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="31dp"
                 android:text="Click to Submit Purchase Request"
                 android:visibility="invisible"
                 app:backgroundTint="#85ae8b" />

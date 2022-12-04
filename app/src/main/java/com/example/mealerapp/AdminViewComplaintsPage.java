@@ -37,7 +37,7 @@ import java.util.List;
 
 public class AdminViewComplaintsPage extends AppCompatActivity {
 
-    Button showbutton, dismiss, tempSuspend, fire;
+    Button showbutton, dismiss, tempSuspend, fire, homeviewcompgo;
     EditText date;
     Spinner spinner;
     DatabaseReference databaseReference;
@@ -56,10 +56,20 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
         dismiss = (Button)findViewById(R.id.dismiss);
         tempSuspend = (Button)findViewById(R.id.tmpsus);
         fire = (Button)findViewById(R.id.fire);
+        homeviewcompgo = (Button)findViewById(R.id.homeviewcomp);
 
 
         spinner = (Spinner) findViewById (R.id.spinner);
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        homeviewcompgo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHomePage();
+            }
+        });
+
+
         showbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,15 +83,12 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String item = spinner.getSelectedItem().toString();
 
+                String item = spinner.getSelectedItem().toString();
                 String [] listOfString = item.split(",");
                 String [] listOfString2 = listOfString[0].split("=");
                 String username = listOfString2[1] +"," + listOfString[1];
-
-
                 databaseReference.child("complaints").child(username).removeValue();
-
 
             }
         });
@@ -97,9 +104,12 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
 
 
                 date = (EditText)findViewById(R.id.editTextDate);
+                String dateString = date.getText().toString().trim();
 
-                databaseReference.child("users").child(username).child("suspensionStatus").setValue("2023-02-13");
+                databaseReference.child("users").child(username).child("suspensionStatus").setValue(dateString);
                 databaseReference.child("complaints").child(username).removeValue();
+
+
 
 
             }
@@ -148,5 +158,9 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
 
 
         });
+    }
+    public void openHomePage(){
+        Intent intent = new Intent(this, InitialWelcome.class);
+        startActivity(intent);
     }
 }
