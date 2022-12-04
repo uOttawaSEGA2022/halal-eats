@@ -1,7 +1,5 @@
 package com.example.mealerapp;
 
-import static java.lang.Double.parseDouble;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,7 +36,7 @@ public class ViewOrderStatus extends AppCompatActivity {
     DatabaseReference ref;
 
     String rating;
-    double newRate;
+    String newRate;
 
 
     @Override
@@ -50,11 +48,11 @@ public class ViewOrderStatus extends AppCompatActivity {
 
         // ****** RETURN HOME BUTTON ****** //
         returnHome = (Button) findViewById(R.id.returntohomestatus);
+
         rate = (Button) findViewById(R.id.submitRating);
         complain = (Button) findViewById(R.id.submitComplaint);
 
         rateTextBox = (EditText) findViewById(R.id.rateTextbox);
-        String rateText = rateTextBox.getText().toString();
         complaintTextBox = (EditText) findViewById(R.id.complaintTextBox);
 
 
@@ -113,42 +111,37 @@ public class ViewOrderStatus extends AppCompatActivity {
 
                 status = listOfStrings [3].trim();
 
-                //  rate
+
+                // add complaint to complaints list
+
+
 
                 if (status.contains("approved")){
-                    Log.e( "approved ", "");
+
                     // add complaint to FB
                     DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users");
-                    Log.e( "cook: ", ref2.child(cook).getKey());
+                    //Log.e( "cook: ", ref.child(email).getValue());
                     ref2.child(cook).child("rating").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                            // rating is the value we retrieved form firebase
-                           rating = snapshot.getValue().toString();
-                           rating = rating.replace(",", ".");
+                            // rating is the value we retrived form firebad
+                            rating = snapshot.getValue().toString();
+                            rating = rating.replace(",", ".");
 
 
-                           double converted = Double.parseDouble(rateText);
+                            String inputRating = rateTextBox.getText().toString();
 
                             // calculations
-                           double doubleRating = parseDouble(rating);
-                           double added = (doubleRating + converted);
-                           added = added / 10;
-                           added = added * 5;
-
-
-
-
+                            double doubleRating = Double.parseDouble(rating);
+                            double doubleRatingInput = Double.parseDouble(inputRating);
+                            double added = ((doubleRating + doubleRatingInput)/10)*5;
 
                             // add it back to firebase
                             ref2.child(cook).child("rating").setValue(added);
 
                         }
-
-
-
 
 
                         @Override
@@ -176,17 +169,17 @@ public class ViewOrderStatus extends AppCompatActivity {
                 orders.clear();
                 for (DataSnapshot item : snapshot.getChildren()) {
 
-                   // retrieve mealName, cook and status
-                   if (item.getKey().equals("null")) {
-                       continue;
-                   }
-                   String cook = item.child("cook").getValue().toString();
-                   String status = item.child("status").getValue().toString();
-                   String mealName = item.child("mealName").getValue().toString();
+                    // retrieve mealName, cook and status
+                    if (item.getKey().equals("null")) {
+                        continue;
+                    }
+                    String cook = item.child("cook").getValue().toString();
+                    String status = item.child("status").getValue().toString();
+                    String mealName = item.child("mealName").getValue().toString();
 
 
-                   String order = mealName + ", " + cook + ", "+ status;
-                   orders.add(order);
+                    String order = mealName + ", " + cook + ", "+ status;
+                    orders.add(order);
 
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ViewOrderStatus.this, android.R.layout.simple_spinner_dropdown_item, orders);
                     arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
