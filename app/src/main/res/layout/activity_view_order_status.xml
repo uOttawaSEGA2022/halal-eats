@@ -10,7 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Spinner
+            android:id="@+id/clientOrdersSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="60dp" />
 
         <ImageView
             android:id="@+id/imageView10"
@@ -20,12 +31,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <Spinner
-            android:id="@+id/clientOrdersSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="12dp" />
 
         <EditText
             android:id="@+id/rateTextbox"
@@ -44,7 +50,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="10dp" />
+            android:layout_height="48dp" />
 
         <ImageView
             android:id="@+id/imageView11"
@@ -73,7 +79,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="124dp" />
 
         <Button
             android:id="@+id/returntohomestatus"

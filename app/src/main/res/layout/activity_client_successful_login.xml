@@ -48,26 +48,10 @@
                 app:backgroundTint="#85ae8b" />
 
             <Button
-                android:id="@+id/rateprevorder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="rate previous order"
-                android:textSize="15sp"
-                app:backgroundTint="#85ae8b" />
-
-            <Button
-                android:id="@+id/submitcomplaint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="submit complaint"
-                android:textSize="15sp"
-                app:backgroundTint="#85ae8b" />
-
-            <Button
                 android:id="@+id/viewstatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="view order status"
+                android:text="orders"
                 android:textSize="15sp"
                 app:backgroundTint="#85ae8b" />
 
