@@ -25,8 +25,6 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
         returnHome = (Button) findViewById(R.id.button5);
         searchmeal = (Button) findViewById(R.id.search);
         viewstatus = (Button) findViewById(R.id.viewstatus);
-        submitcomplaint = (Button) findViewById(R.id.submitcomplaint);
-        ratepreviousorder = (Button) findViewById(R.id.rateprevorder);
         viewnotification = (Button) findViewById(R.id.viewnotification);
 
         returnHome.setOnClickListener(new View.OnClickListener() {
@@ -47,18 +45,8 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
                 openStatus();
             }
         });
-        submitcomplaint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openComplaint();
-            }
-        });
-        ratepreviousorder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openRate();
-            }
-        });
+
+
         viewnotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,17 +64,11 @@ public class ClientSuccessfulLogin extends AppCompatActivity {
         Intent intent = new Intent(this, SearchMeal.class);
         startActivity(intent);
     }
-    public void openRate(){
-        Intent intent = new Intent(this, RateOrder.class);
-        startActivity(intent);
-    }
+
     public void openStatus(){
         Intent intent = new Intent(this, ViewOrderStatus.class);
         startActivity(intent);
     }
-    public void openComplaint(){
-        Intent intent = new Intent(this, SubmitComplaint.class);
-        startActivity(intent);
-    }
+
 
 }
