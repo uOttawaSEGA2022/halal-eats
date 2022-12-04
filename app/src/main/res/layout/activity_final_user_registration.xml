@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".FinalUserRegistration">
 
     <LinearLayout
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Welcome to Halal Eats!"
-            android:textColor="#85ae8b"
+            android:textColor="#638A69"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="You are registering as a client"
+            android:textColor="#2C2C2C"
             android:textSize="16sp"
             android:textStyle="italic" />
 
@@ -57,7 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="First Name" />
+            android:text="First Name"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/FirstField"
@@ -72,7 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Last Name" />
+            android:text="Last Name"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/LastField"
@@ -87,7 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Email" />
+            android:text="Email"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/EmailField3"
@@ -102,7 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Password" />
+            android:text="Password"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/PWField"
@@ -117,7 +123,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Address" />
+            android:text="Address"
+            android:textColor="#2C2C2C" />
 
         <EditText
             android:id="@+id/AddField"
@@ -132,7 +139,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Card Details" />
+            android:text="Card Details"
+            android:textColor="#2C2C2C" />
 
         <LinearLayout
             android:layout_width="wrap_content"

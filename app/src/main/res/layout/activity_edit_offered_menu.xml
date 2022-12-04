@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f2f6f3"
     tools:context=".EditOfferedMenu">
 
 
@@ -28,10 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="You are editing your offered menu"
-            android:textColor="#85ae8b"
+            android:text="Edit offered menu"
+            android:textColor="#638A69"
             android:textSize="20sp"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinner"
