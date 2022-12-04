@@ -1,5 +1,7 @@
 package com.example.mealerapp;
 
+import static java.lang.Double.parseDouble;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,7 +54,7 @@ public class ViewOrderStatus extends AppCompatActivity {
         complain = (Button) findViewById(R.id.submitComplaint);
 
         rateTextBox = (EditText) findViewById(R.id.rateTextbox);
-        String rateText = rateTextBox.toString();
+        String rateText = rateTextBox.getText().toString();
         complaintTextBox = (EditText) findViewById(R.id.complaintTextBox);
 
 
@@ -77,7 +79,10 @@ public class ViewOrderStatus extends AppCompatActivity {
                 String [] listOfStrings = selection.split(",");
                 cook = listOfStrings[1];
                 cook = cook.replace(".", ",");
-                status = listOfStrings [2];
+                cook = cook.trim();
+                cook = cook + ",com";
+
+                status = listOfStrings [3].trim();
 
                 // add complaint to complaints list
 
@@ -104,24 +109,23 @@ public class ViewOrderStatus extends AppCompatActivity {
                 cook = listOfStrings[1];
                 cook = cook.replace(".", ",");
                 cook = cook.trim();
+                cook = cook + ",com";
 
-                status = listOfStrings [2];
+                status = listOfStrings [3].trim();
 
-                // add complaint to complaints list
-
-
+                //  rate
 
                 if (status.contains("approved")){
-
+                    Log.e( "approved ", "");
                     // add complaint to FB
                     DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users");
-                    //Log.e( "cook: ", ref.child(email).getValue());
+                    Log.e( "cook: ", ref2.child(cook).getKey());
                     ref2.child(cook).child("rating").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                            // rating is the value we retrived form firebad
+                            // rating is the value we retrieved form firebase
                            rating = snapshot.getValue().toString();
                            rating = rating.replace(",", ".");
 
@@ -129,8 +133,8 @@ public class ViewOrderStatus extends AppCompatActivity {
                            double converted = Double.parseDouble(rateText);
 
                             // calculations
-                           double doubleRating = Double.parseDouble(rating);
-                           double added = (doubleRating + newRate);
+                           double doubleRating = parseDouble(rating);
+                           double added = (doubleRating + converted);
                            added = added / 10;
                            added = added * 5;
 
