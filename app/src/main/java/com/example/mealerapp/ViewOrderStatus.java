@@ -36,7 +36,7 @@ public class ViewOrderStatus extends AppCompatActivity {
     DatabaseReference ref;
 
     String rating;
-    double newRate;
+    String newRate;
 
 
     @Override
@@ -48,11 +48,11 @@ public class ViewOrderStatus extends AppCompatActivity {
 
         // ****** RETURN HOME BUTTON ****** //
         returnHome = (Button) findViewById(R.id.returntohomestatus);
+
         rate = (Button) findViewById(R.id.submitRating);
         complain = (Button) findViewById(R.id.submitComplaint);
 
         rateTextBox = (EditText) findViewById(R.id.rateTextbox);
-        String rateText = rateTextBox.toString();
         complaintTextBox = (EditText) findViewById(R.id.complaintTextBox);
 
 
@@ -126,25 +126,17 @@ public class ViewOrderStatus extends AppCompatActivity {
                            rating = rating.replace(",", ".");
 
 
-                           double converted = Double.parseDouble(rateText);
+                           String inputRating = rateTextBox.getText().toString();
 
                             // calculations
                            double doubleRating = Double.parseDouble(rating);
-                           double added = (doubleRating + newRate);
-                           added = added / 10;
-                           added = added * 5;
-
-
-
-
+                           double doubleRatingInput = Double.parseDouble(inputRating);
+                           double added = ((doubleRating + doubleRatingInput)/10)*5;
 
                             // add it back to firebase
                             ref2.child(cook).child("rating").setValue(added);
 
                         }
-
-
-
 
 
                         @Override

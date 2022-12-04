@@ -41,22 +41,10 @@
             android:text="search meal" />
 
         <Button
-            android:id="@+id/rateprevorder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="rate previous order" />
-
-        <Button
             android:id="@+id/viewstatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="view order status" />
-
-        <Button
-            android:id="@+id/submitcomplaint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="submit complaint" />
+            android:text="view order status / rate / complain" />
 
         <Button
             android:id="@+id/button5"
