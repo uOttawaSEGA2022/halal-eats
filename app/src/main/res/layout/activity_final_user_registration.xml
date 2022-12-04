@@ -23,14 +23,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/chef" />
+
         <TextView
             android:id="@+id/Wlcm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Welcome to Mealer App!"
-            android:textColor="#A799B7"
-            android:textSize="20sp" />
+            android:text="Welcome to Halal Eats!"
+            android:textColor="#85ae8b"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/Sub"
@@ -38,7 +45,12 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="You are registering as a client"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="italic" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/FirstNmeTxt"
@@ -175,14 +187,14 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:text="Home"
-                app:backgroundTint="#A799B7" />
+                app:backgroundTint="#85ae8b" />
 
             <Button
                 android:id="@+id/Register2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register"
-                app:backgroundTint="#A799B7" />
+                app:backgroundTint="#85ae8b" />
 
         </LinearLayout>
 

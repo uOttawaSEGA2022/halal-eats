@@ -41,11 +41,19 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/viewprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log Off"
-                android:textSize="16sp"
+                android:text="view your profile"
+                android:textSize="15sp"
+                app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/vieworders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="view order requests"
+                android:textSize="15sp"
                 app:backgroundTint="#85ae8b" />
 
             <Button
@@ -53,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit  Menu"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:backgroundTint="#85ae8b" />
 
             <Button
@@ -61,20 +69,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit Offered Menu"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:backgroundTint="#85ae8b" />
 
             <Button
-                android:id="@+id/vieworders"
+                android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="view order requests" />
-
-            <Button
-                android:id="@+id/viewprofile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="view your profile" />
+                android:text="Log Off"
+                android:textSize="15sp"
+                app:backgroundTint="#85ae8b" />
         </LinearLayout>
 
     </LinearLayout>
