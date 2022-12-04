@@ -47,7 +47,7 @@ public class AdminSuccessfulLogin extends AppCompatActivity {
 
 
     public void openHomePage(){
-        Intent intent = new Intent(this, AdminSuccessfulLogin.class);
+        Intent intent = new Intent(this, InitialWelcome.class);
         startActivity(intent);
     }
 }
