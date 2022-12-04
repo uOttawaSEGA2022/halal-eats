@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/cookfirstname"
+                android:id="@+id/cookFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center"
@@ -41,7 +41,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/cooklastname"
+                android:id="@+id/cookLastName"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:gravity="center"
@@ -49,7 +49,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/cookaddress"
+                android:id="@+id/cookAddress"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:gravity="center"
@@ -57,7 +57,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/cookdescription"
+                android:id="@+id/cookDesc"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:gravity="center"
@@ -65,7 +65,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/cookrating"
+                android:id="@+id/cookRating"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:gravity="center"
@@ -73,7 +73,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/cooknumberofmealssold"
+                android:id="@+id/cookNumberOfMealsSold"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:gravity="center"
