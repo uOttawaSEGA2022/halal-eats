@@ -43,18 +43,18 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/adminSuccessButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Log Off"
-                android:textSize="16sp"
-                app:backgroundTint="#85ae8b" />
-
-            <Button
                 android:id="@+id/viewComplaintsAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="VIEW COMPLAINTS"
+                android:textSize="16sp"
+                app:backgroundTint="#85ae8b" />
+
+            <Button
+                android:id="@+id/adminSuccessButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log Off"
                 android:textSize="16sp"
                 app:backgroundTint="#85ae8b" />
         </LinearLayout>
