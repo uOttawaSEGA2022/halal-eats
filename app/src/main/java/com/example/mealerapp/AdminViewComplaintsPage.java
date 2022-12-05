@@ -73,8 +73,14 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
         showbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String item = spinner.getSelectedItem().toString();
-                Toast.makeText(AdminViewComplaintsPage.this, item, Toast.LENGTH_SHORT).show();
+
+                if (spinner.getCount()!=0) {
+                    String item = spinner.getSelectedItem().toString();
+                    Toast.makeText(AdminViewComplaintsPage.this, item, Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -84,30 +90,41 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String item = spinner.getSelectedItem().toString();
-                String [] listOfString = item.split(",");
-                String [] listOfString2 = listOfString[0].split("=");
-                String username = listOfString2[1] +"," + listOfString[1];
-                databaseReference.child("complaints").child(username).removeValue();
-
+                if (spinner.getCount()!=0) {
+                    String item = spinner.getSelectedItem().toString();
+                    String[] listOfString = item.split(",");
+                    String[] listOfString2 = listOfString[0].split("=");
+                    String username = listOfString2[1] + "," + listOfString[1];
+                    databaseReference.child("complaints").child(username).removeValue();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         tempSuspend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String item = spinner.getSelectedItem().toString();
 
-                String [] listOfString = item.split(",");
-                String [] listOfString2 = listOfString[0].split("=");
-                String username = listOfString2[1] +"," + listOfString[1];
+                if (spinner.getCount()!=0) {
+                    String item = spinner.getSelectedItem().toString();
+
+                    String [] listOfString = item.split(",");
+                    String [] listOfString2 = listOfString[0].split("=");
+                    String username = listOfString2[1] +"," + listOfString[1];
 
 
-                date = (EditText)findViewById(R.id.editTextDate);
-                String dateString = date.getText().toString().trim();
+                    date = (EditText)findViewById(R.id.editTextDate);
+                    String dateString = date.getText().toString().trim();
 
-                databaseReference.child("users").child(username).child("suspensionStatus").setValue(dateString);
-                databaseReference.child("complaints").child(username).removeValue();
+                    databaseReference.child("users").child(username).child("suspensionStatus").setValue(dateString);
+                    databaseReference.child("complaints").child(username).removeValue();
+
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
 
 
 
@@ -118,29 +135,34 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
         fire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String item = spinner.getSelectedItem().toString();
 
-                String [] listOfString = item.split(",");
-                String [] listOfString2 = listOfString[0].split("=");
-                String username = listOfString2[1] +"," + listOfString[1];
+                if (spinner.getCount()!=0) {
 
-                databaseReference.child("users").child(username).child("suspensionStatus").setValue("p");
-                databaseReference.child("complaints").child(username).removeValue();
+                    String item = spinner.getSelectedItem().toString();
+                    String[] listOfString = item.split(",");
+                    String[] listOfString2 = listOfString[0].split("=");
+                    String username = listOfString2[1] + "," + listOfString[1];
 
+                    databaseReference.child("users").child(username).child("suspensionStatus").setValue("p");
+                    databaseReference.child("complaints").child(username).removeValue();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
         databaseReference.child("complaints").addValueEventListener(new ValueEventListener() {
-
-
 
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
                 complaints.clear();
+
+
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     String spinnerComplaint = item.getValue().toString();
 
                     complaints.add(spinnerComplaint);
-
-
                 }
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(AdminViewComplaintsPage.this, android.R.layout.simple_spinner_dropdown_item, complaints);

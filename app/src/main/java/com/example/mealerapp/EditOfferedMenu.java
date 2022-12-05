@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class EditOfferedMenu extends AppCompatActivity {
@@ -96,14 +97,18 @@ public class EditOfferedMenu extends AppCompatActivity {
         addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selection = spinner.getSelectedItem().toString();
+                if (spinner.getCount()!=0) {
+                    selection = spinner.getSelectedItem().toString();
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                ref.child(email).child("menu").child(selection).child("offered").setValue(true);
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                    ref.child(email).child("menu").child(selection).child("offered").setValue(true);
 
-                textView.setText("You added  '"+ selection +"'  to the offered menu");
+                    textView.setText("You added  '" + selection + "'  to the offered menu");
 
-
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -116,6 +121,7 @@ public class EditOfferedMenu extends AppCompatActivity {
         removeMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (spinner.getCount()!=0) {
                 selection = spinner.getSelectedItem().toString();
                 int indexOfMeal = menu.indexOf(selection);
                 String exist = menuIndex.get(indexOfMeal);
@@ -124,7 +130,10 @@ public class EditOfferedMenu extends AppCompatActivity {
                 ref.child(email).child("menu").child(selection).child("offered").setValue(false);
                 textView.setText("You removed  '" + selection + "'  from the offered menu");
                 exist = "false";
-
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

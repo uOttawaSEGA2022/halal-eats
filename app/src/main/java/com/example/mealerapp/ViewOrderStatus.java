@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,25 +74,28 @@ public class ViewOrderStatus extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // get selected item
-                selection = spinner.getSelectedItem().toString();
-                String [] listOfStrings = selection.split(",");
-                cook = listOfStrings[1];
-                cook = cook.replace(".", ",");
-                cook = cook.trim();
-                cook = cook + ",com";
+                if (spinner.getCount()!=0) {
+                    selection = spinner.getSelectedItem().toString();
+                    String[] listOfStrings = selection.split(",");
+                    cook = listOfStrings[1];
+                    cook = cook.replace(".", ",");
+                    cook = cook.trim();
+                    cook = cook + ",com";
 
-                status = listOfStrings [3].trim();
+                    status = listOfStrings[3].trim();
 
-                // add complaint to complaints list
+                    // add complaint to complaints list
 
-                if (status.contains("approved")){
+                    if (status.contains("approved")) {
 
-                    // add complaint to FB
-                    ref = FirebaseDatabase.getInstance().getReference("complaints");
-                    ref.child(cook).child("username").setValue(cook);
-                    ref.child(cook).child("complaint").setValue(complaintTextBox.getText().toString());
+                        // add complaint to FB
+                        ref = FirebaseDatabase.getInstance().getReference("complaints");
+                        ref.child(cook).child("username").setValue(cook);
+                        ref.child(cook).child("complaint").setValue(complaintTextBox.getText().toString());
+                    }
+                } else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
                 }
-
 
 
             }
@@ -100,7 +104,7 @@ public class ViewOrderStatus extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (spinner.getCount()!=0) {
                 // get selected item
                 selection = spinner.getSelectedItem().toString();
                 String [] listOfStrings = selection.split(",");
@@ -116,7 +120,7 @@ public class ViewOrderStatus extends AppCompatActivity {
 
 
 
-                if (status.contains("approved")){
+                if (status.contains("approved")) {
 
                     // add complaint to FB
                     DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users");
@@ -136,7 +140,7 @@ public class ViewOrderStatus extends AppCompatActivity {
                             // calculations
                             double doubleRating = Double.parseDouble(rating);
                             double doubleRatingInput = Double.parseDouble(inputRating);
-                            double added = ((doubleRating + doubleRatingInput)/10)*5;
+                            double added = ((doubleRating + doubleRatingInput) / 10) * 5;
 
                             // add it back to firebase
                             ref2.child(cook).child("rating").setValue(added);
@@ -150,7 +154,9 @@ public class ViewOrderStatus extends AppCompatActivity {
                         }
                     });
 
-
+                }
+                }else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
                 }
 
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -95,98 +96,100 @@ public class CookViewOrders extends AppCompatActivity {
         approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String item = spinner.getSelectedItem().toString();
 
-                String [] orderAttributes = item.split(" - ");
-                final String displayedMealName = orderAttributes[0].trim();
-                final String displayedClient = orderAttributes[1].trim();
-                final String displayedStatus = orderAttributes[2].trim();
+                if (spinner.getCount()!=0) {
+                    String item = spinner.getSelectedItem().toString();
 
-                String[] orderAttributes2 = new String[] {displayedClient, displayedStatus, displayedMealName};
+                    String[] orderAttributes = item.split(" - ");
+                    final String displayedMealName = orderAttributes[0].trim();
+                    final String displayedClient = orderAttributes[1].trim();
+                    final String displayedStatus = orderAttributes[2].trim();
 
-
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
-                databaseReference.child(cookEmail).child("orders").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        // search orders
-                        //orders.clear();
-                        for (DataSnapshot item : snapshot.getChildren()) {
-
-                            // retrieve mealName, client and status
+                    String[] orderAttributes2 = new String[]{displayedClient, displayedStatus, displayedMealName};
 
 
-                            if (item.getKey().equals("null")) {
-                                continue;
-                            }
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+                    databaseReference.child(cookEmail).child("orders").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            // search orders
+                            //orders.clear();
+                            for (DataSnapshot item : snapshot.getChildren()) {
+
+                                // retrieve mealName, client and status
 
 
-                            String key = item.getKey();
-                            String client = item.child("client").getValue().toString();
-                            String status = item.child("status").getValue().toString();
-                            String mealName = item.child("mealName").getValue().toString();
-
-                            if (displayedMealName.equals(mealName) && displayedStatus.equals(status) && displayedClient.equals(client)) {
-                                // change value to approved in both cook & client
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                firebaseDatabase.getReference().child("users").child(cookEmail).child("orders").child(key).child("status").setValue("approved");
+                                if (item.getKey().equals("null")) {
+                                    continue;
+                                }
 
 
+                                String key = item.getKey();
+                                String client = item.child("client").getValue().toString();
+                                String status = item.child("status").getValue().toString();
+                                String mealName = item.child("mealName").getValue().toString();
 
-                            }
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                }); // ***** COOK APPROVE VALUE EVENT LISTENER ENDS ***** //
-
-                DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("users");
-                databaseReference2.child(orderAttributes2[0]).child("orders").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        for (DataSnapshot item : snapshot.getChildren()) {
-
-                            // retrieve mealName, cook and status
+                                if (displayedMealName.equals(mealName) && displayedStatus.equals(status) && displayedClient.equals(client)) {
+                                    // change value to approved in both cook & client
+                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                    firebaseDatabase.getReference().child("users").child(cookEmail).child("orders").child(key).child("status").setValue("approved");
 
 
-                            if (item.getKey().equals("null")) {
-                                continue;
-                            }
-
-
-                            String key = item.getKey();
-                            String cook = item.child("cook").getValue().toString();
-                            String status = item.child("status").getValue().toString();
-                            String mealName = item.child("mealName").getValue().toString();
-
-                            if (orderAttributes2[2].equals(mealName) && orderAttributes2[1].equals(status) && cookEmail.equals(cook)) {
-                                // change value to approved in both cook & client
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                firebaseDatabase.getReference().child("users").child(displayedClient).child("orders").child(key).child("status").setValue("approved");
-
+                                }
 
                             }
 
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    }); // ***** COOK APPROVE VALUE EVENT LISTENER ENDS ***** //
 
-                    }
-                }); // *********** CLIENT APPROVE VALUE EVENT LISTENER ENDS ************* //
+                    DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("users");
+                    databaseReference2.child(orderAttributes2[0]).child("orders").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            for (DataSnapshot item : snapshot.getChildren()) {
+
+                                // retrieve mealName, cook and status
 
 
+                                if (item.getKey().equals("null")) {
+                                    continue;
+                                }
 
 
+                                String key = item.getKey();
+                                String cook = item.child("cook").getValue().toString();
+                                String status = item.child("status").getValue().toString();
+                                String mealName = item.child("mealName").getValue().toString();
+
+                                if (orderAttributes2[2].equals(mealName) && orderAttributes2[1].equals(status) && cookEmail.equals(cook)) {
+                                    // change value to approved in both cook & client
+                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                    firebaseDatabase.getReference().child("users").child(displayedClient).child("orders").child(key).child("status").setValue("approved");
+
+
+                                }
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    }); // *********** CLIENT APPROVE VALUE EVENT LISTENER ENDS ************* //
+
+
+                }else{
+                    Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+                }
 
             }
         }); // ******** APPROVE ON CLICK ENDS *********** //
@@ -196,97 +199,100 @@ public class CookViewOrders extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String item = spinner.getSelectedItem().toString();
+                if (spinner.getCount()!=0) {
 
-                String [] orderAttributes = item.split(" - ");
-                final String displayedMealName = orderAttributes[0].trim();
-                final String displayedClient = orderAttributes[1].trim();
-                final String displayedStatus = orderAttributes[2].trim();
+                    String item = spinner.getSelectedItem().toString();
 
-                String[] orderAttributes2 = new String[] {displayedClient, displayedStatus, displayedMealName};
+                    String[] orderAttributes = item.split(" - ");
+                    final String displayedMealName = orderAttributes[0].trim();
+                    final String displayedClient = orderAttributes[1].trim();
+                    final String displayedStatus = orderAttributes[2].trim();
 
-
-                // need to remove the meal from spinner list & display
-
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
-                databaseReference.child(cookEmail).child("orders").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        // search orders
-                        //orders.clear();
-                        for (DataSnapshot item : snapshot.getChildren()) {
-
-                            // retrieve mealName, client and status
+                    String[] orderAttributes2 = new String[]{displayedClient, displayedStatus, displayedMealName};
 
 
-                            if (item.getKey().equals("null")) {
-                                continue;
-                            }
+                    // need to remove the meal from spinner list & display
+
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+                    databaseReference.child(cookEmail).child("orders").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            // search orders
+                            //orders.clear();
+                            for (DataSnapshot item : snapshot.getChildren()) {
+
+                                // retrieve mealName, client and status
 
 
-                            String key = item.getKey();
-                            String client = item.child("client").getValue().toString();
-                            String status = item.child("status").getValue().toString();
-                            String mealName = item.child("mealName").getValue().toString();
-
-                            if (displayedMealName.equals(mealName) && displayedStatus.equals(status) && displayedClient.equals(client)) {
-                                // change value to approved in both cook & client
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                firebaseDatabase.getReference().child("users").child(cookEmail).child("orders").child(key).child("status").setValue("rejected");
+                                if (item.getKey().equals("null")) {
+                                    continue;
+                                }
 
 
+                                String key = item.getKey();
+                                String client = item.child("client").getValue().toString();
+                                String status = item.child("status").getValue().toString();
+                                String mealName = item.child("mealName").getValue().toString();
 
-                            }
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                }); // ***** COOK REJECT VALUE EVENT LISTENER ENDS ***** //
-
-                DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("users");
-                databaseReference2.child(orderAttributes2[0]).child("orders").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        for (DataSnapshot item : snapshot.getChildren()) {
-
-                            // retrieve mealName, cook and status
+                                if (displayedMealName.equals(mealName) && displayedStatus.equals(status) && displayedClient.equals(client)) {
+                                    // change value to approved in both cook & client
+                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                    firebaseDatabase.getReference().child("users").child(cookEmail).child("orders").child(key).child("status").setValue("rejected");
 
 
-                            if (item.getKey().equals("null")) {
-                                continue;
-                            }
-
-                            String key = item.getKey();
-                            String cook = item.child("cook").getValue().toString();
-                            String status = item.child("status").getValue().toString();
-                            String mealName = item.child("mealName").getValue().toString();
-
-                            if (orderAttributes2[2].equals(mealName) && orderAttributes2[1].equals(status) && cook.equals(cook)) {
-                                // change value to approved in both cook & client
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                firebaseDatabase.getReference().child("users").child(displayedClient).child("orders").child(key).child("status").setValue("rejected");
-
+                                }
 
                             }
 
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    }); // ***** COOK REJECT VALUE EVENT LISTENER ENDS ***** //
 
-                    }
-                }); // *********** CLIENT REJECT VALUE EVENT LISTENER ENDS ************* //
+                    DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("users");
+                    databaseReference2.child(orderAttributes2[0]).child("orders").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            for (DataSnapshot item : snapshot.getChildren()) {
+
+                                // retrieve mealName, cook and status
 
 
+                                if (item.getKey().equals("null")) {
+                                    continue;
+                                }
+
+                                String key = item.getKey();
+                                String cook = item.child("cook").getValue().toString();
+                                String status = item.child("status").getValue().toString();
+                                String mealName = item.child("mealName").getValue().toString();
+
+                                if (orderAttributes2[2].equals(mealName) && orderAttributes2[1].equals(status) && cook.equals(cook)) {
+                                    // change value to approved in both cook & client
+                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                    firebaseDatabase.getReference().child("users").child(displayedClient).child("orders").child(key).child("status").setValue("rejected");
+
+
+                                }
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    }); // *********** CLIENT REJECT VALUE EVENT LISTENER ENDS ************* //
+
+                }else{
+                Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+            }
             }
         }); // ***** REJECT ON CLICK ENDS ******* //  *
 
