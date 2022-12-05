@@ -187,10 +187,13 @@ public class SearchMeal extends AppCompatActivity {
 
                                         }
 
+
                                         // add meal to all meals list
-                                        newMeal = new Meal( username,  mealName,  mealType,
-                                                cuisine,  price,  offered, desc);
-                                        allMeals.add(newMeal);
+                                        if (offered.equalsIgnoreCase("true")) {
+                                            newMeal = new Meal(username, mealName, mealType,
+                                                    cuisine, price, offered, desc);
+                                            allMeals.add(newMeal);
+                                        }
                                     }
 
                             }
@@ -219,7 +222,7 @@ public class SearchMeal extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        String mealInput = mealNameInput.getText().toString();
+                        String mealInput = mealNameInput.getText().toString().toLowerCase();
 
 
                         // reset search menu
@@ -271,17 +274,15 @@ public class SearchMeal extends AppCompatActivity {
                             for (Meal meal : allMeals) {
                                 String user;
 
-                                nameSearch = meal.getMealName();
-                                typeSearch = meal.getMealType();
-                                cuisineSearch = meal.getCuisine();
-                                // if match found, add to menuSearchList
-                                if (nameSearch.equalsIgnoreCase(mealInput) || typeSearch.equalsIgnoreCase(mealInput)
-                                        || cuisineSearch.equalsIgnoreCase(mealInput)){
+                                nameSearch = meal.getMealName().toLowerCase();
+                                typeSearch = meal.getMealType().toLowerCase();
+                                cuisineSearch = meal.getCuisine().toLowerCase();
+                                // find a match
+                                if (nameSearch.contains(mealInput)|| typeSearch.contains(mealInput)
+                                        || cuisineSearch.contains(mealInput)){
 
-                                     //  menuSearchList.add(nameSearch); // add meal names
-                                         menuSearchList.add(meal);
-
-                                         user = meal.getUsername();
+                                    menuSearchList.add(meal); // add meal names
+                                    user = meal.getUsername();
 
 
 
