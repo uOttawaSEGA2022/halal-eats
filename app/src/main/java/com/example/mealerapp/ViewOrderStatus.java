@@ -91,7 +91,13 @@ public class ViewOrderStatus extends AppCompatActivity {
                         // add complaint to FB
                         ref = FirebaseDatabase.getInstance().getReference("complaints");
                         ref.child(cook).child("username").setValue(cook);
-                        ref.child(cook).child("complaint").setValue(complaintTextBox.getText().toString());
+                        String complaintfromtb = complaintTextBox.getText().toString();
+                        if (!complaintfromtb.equals("")){
+                            ref.child(cook).child("complaint").setValue(complaintfromtb);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Complaint can't be empty",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else{
                     Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
@@ -133,18 +139,39 @@ public class ViewOrderStatus extends AppCompatActivity {
                             // rating is the value we retrived form firebad
                             rating = snapshot.getValue().toString();
                             rating = rating.replace(",", ".");
-
+                            //rating = "4.9" from firebase
 
                             String inputRating = rateTextBox.getText().toString();
+                            //rating from user input "3.6"
+
+
 
                             // calculations
                             double doubleRating = Double.parseDouble(rating);
-                            double doubleRatingInput = Double.parseDouble(inputRating);
-                            double added = ((doubleRating + doubleRatingInput) / 10) * 5;
 
-                            // add it back to firebase
-                            ref2.child(cook).child("rating").setValue(added);
 
+                            if (isNumeric(inputRating)) {
+
+                                double doubleRatingInput = Double.parseDouble(inputRating);
+
+                                if (doubleRatingInput > 0 && doubleRatingInput < 6){
+
+                                    double added = ((doubleRating + doubleRatingInput) / 10) * 5;
+                                    // add it back to firebase
+                                    ref2.child(cook).child("rating").setValue(added);
+
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(),"Please enter a number between 1 and 5",Toast.LENGTH_SHORT).show();
+
+                                }
+
+
+
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Please enter only numbers",Toast.LENGTH_SHORT).show();
+                            }
                         }
 
 
@@ -209,5 +236,17 @@ public class ViewOrderStatus extends AppCompatActivity {
     public void openHomePage(){
         Intent intent = new Intent(this, ClientSuccessfulLogin.class);
         startActivity(intent);
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }

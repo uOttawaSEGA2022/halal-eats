@@ -110,16 +110,22 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
                 if (spinner.getCount()!=0) {
                     String item = spinner.getSelectedItem().toString();
 
-                    String [] listOfString = item.split(",");
-                    String [] listOfString2 = listOfString[0].split("=");
-                    String username = listOfString2[1] +"," + listOfString[1];
+                    if (item.matches("\\d{4}-\\d{2}-\\d{2}")) {
+
+                        String[] listOfString = item.split(",");
+                        String[] listOfString2 = listOfString[0].split("=");
+                        String username = listOfString2[1] + "," + listOfString[1];
 
 
-                    date = (EditText)findViewById(R.id.editTextDate);
-                    String dateString = date.getText().toString().trim();
+                        date = (EditText) findViewById(R.id.editTextDate);
+                        String dateString = date.getText().toString().trim();
 
-                    databaseReference.child("users").child(username).child("suspensionStatus").setValue(dateString);
-                    databaseReference.child("complaints").child(username).removeValue();
+                        databaseReference.child("users").child(username).child("suspensionStatus").setValue(dateString);
+                        databaseReference.child("complaints").child(username).removeValue();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"Please follow the format YYYY-MM-DD exactly",Toast.LENGTH_SHORT).show();
+                    }
 
                 }
                 else{
