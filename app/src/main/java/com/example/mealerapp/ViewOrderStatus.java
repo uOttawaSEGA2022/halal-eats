@@ -73,6 +73,8 @@ public class ViewOrderStatus extends AppCompatActivity {
         complain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                complaintTextBox.setError(null); // clear error
+
                 // get selected item
                 if (spinner.getCount()!=0) {
                     selection = spinner.getSelectedItem().toString();
@@ -92,15 +94,22 @@ public class ViewOrderStatus extends AppCompatActivity {
                         ref = FirebaseDatabase.getInstance().getReference("complaints");
                         ref.child(cook).child("username").setValue(cook);
                         String complaintfromtb = complaintTextBox.getText().toString();
+
                         if (!complaintfromtb.equals("")){
                             ref.child(cook).child("complaint").setValue(complaintfromtb);
+
+                            complaintTextBox.setText(null); // reset text box
                         }
                         else{
                             Toast.makeText(getApplicationContext(),"Complaint can't be empty",Toast.LENGTH_SHORT).show();
                         }
                     }
+                    else{
+                        complaintTextBox.setError("This meal is not purchased.");
+                    }
                 } else{
                     Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
+
                 }
 
 
@@ -110,6 +119,9 @@ public class ViewOrderStatus extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                rateTextBox.setError(null); // clear error
+
+
                 if (spinner.getCount()!=0) {
                 // get selected item
                 selection = spinner.getSelectedItem().toString();
@@ -123,10 +135,8 @@ public class ViewOrderStatus extends AppCompatActivity {
 
 
                 // add complaint to complaints list
-
-
-
                 if (status.contains("approved")) {
+
 
                     // add complaint to FB
                     DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("users");
@@ -160,6 +170,8 @@ public class ViewOrderStatus extends AppCompatActivity {
                                     // add it back to firebase
                                     ref2.child(cook).child("rating").setValue(added);
 
+                                    rateTextBox.setText(null); // reset text box
+
                                 }
                                 else{
                                     Toast.makeText(getApplicationContext(),"Please enter a number between 1 and 5",Toast.LENGTH_SHORT).show();
@@ -181,6 +193,9 @@ public class ViewOrderStatus extends AppCompatActivity {
                         }
                     });
 
+                }
+                else{
+                    rateTextBox.setError("This meal is not purchased.");
                 }
                 }else{
                     Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();

@@ -58,19 +58,19 @@ public class EditOfferedMenu extends AppCompatActivity {
 
             public void onDataChange (@NonNull DataSnapshot dataSnapshot){
                 menu.clear();
+                menuIndex.clear();
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     String spinnerComplaint = item.getKey().toString();
-                    Log.e("key",spinnerComplaint);
+
                     if (item.child("offered").getValue()!= null){
-                        Log.e("value ",item.child("offered").getValue().toString());
+
                         String index = item.getValue().toString();
 
                         menu.add(spinnerComplaint);
                         menuIndex.add(index);
 
                     }
-                    //Log.e("value ",item.child("offered").getValue().toString());
-                    //String index = item.getValue().toString();
+
 
 
                 }
@@ -97,13 +97,20 @@ public class EditOfferedMenu extends AppCompatActivity {
         addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                removeMeal.setError(null); // clear error
+
                 if (spinner.getCount()!=0) {
-                    selection = spinner.getSelectedItem().toString();
 
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                    ref.child(email).child("menu").child(selection).child("offered").setValue(true);
 
-                    textView.setText("You added  '" + selection + "'  to the offered menu");
+
+                        selection = spinner.getSelectedItem().toString();
+
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                        ref.child(email).child("menu").child(selection).child("offered").setValue(true);
+
+                        textView.setText("You added  '" + selection + "'  to the offered menu");
+
+
 
                 }
                 else{
@@ -121,15 +128,25 @@ public class EditOfferedMenu extends AppCompatActivity {
         removeMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                removeMeal.setError(null); // clear error
+
                 if (spinner.getCount()!=0) {
                 selection = spinner.getSelectedItem().toString();
                 int indexOfMeal = menu.indexOf(selection);
                 String exist = menuIndex.get(indexOfMeal);
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
-                ref.child(email).child("menu").child(selection).child("offered").setValue(false);
-                textView.setText("You removed  '" + selection + "'  from the offered menu");
-                exist = "false";
+
+                    if (exist.contains("false")){
+                        removeMeal.setError("meal does not exist in offered menu.");
+
+                    }
+                    else {
+
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+                        ref.child(email).child("menu").child(selection).child("offered").setValue(false);
+                        textView.setText("You removed  '" + selection + "'  from the offered menu");
+                        exist = "false";
+                    }
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Dropdown is empty",Toast.LENGTH_SHORT).show();
