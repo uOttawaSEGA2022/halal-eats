@@ -272,7 +272,7 @@ public class CookViewOrders extends AppCompatActivity {
                                 String status = item.child("status").getValue().toString();
                                 String mealName = item.child("mealName").getValue().toString();
 
-                                if (orderAttributes2[2].equals(mealName) && orderAttributes2[1].equals(status) && cook.equals(cook)) {
+                                if (orderAttributes2[2].equals(mealName) && orderAttributes2[1].equals(status) && cookEmail.equals(cook)) {
                                     // change value to approved in both cook & client
                                     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                                     firebaseDatabase.getReference().child("users").child(displayedClient).child("orders").child(key).child("status").setValue("rejected");
