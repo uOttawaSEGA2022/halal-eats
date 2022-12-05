@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,16 +111,14 @@ public class AdminViewComplaintsPage extends AppCompatActivity {
                 if (spinner.getCount()!=0) {
                     String item = spinner.getSelectedItem().toString();
 
-                    if (item.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    date = (EditText) findViewById(R.id.editTextDate);
+                    String dateString = date.getText().toString().trim();
+
+                    if (dateString.matches("([0-9]{4})-([0-9]{2})-([0-9]{2})")) {
 
                         String[] listOfString = item.split(",");
                         String[] listOfString2 = listOfString[0].split("=");
                         String username = listOfString2[1] + "," + listOfString[1];
-
-
-                        date = (EditText) findViewById(R.id.editTextDate);
-                        String dateString = date.getText().toString().trim();
-
                         databaseReference.child("users").child(username).child("suspensionStatus").setValue(dateString);
                         databaseReference.child("complaints").child(username).removeValue();
                     }
