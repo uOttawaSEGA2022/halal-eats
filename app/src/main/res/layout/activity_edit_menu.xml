@@ -72,7 +72,7 @@
                 android:id="@+id/priceInput"
                 android:layout_width="400dp"
                 android:layout_height="wrap_content"
-                android:hint="Enter price" />
+                android:hint="Enter price (number only)" />
         </LinearLayout>
 
         <LinearLayout

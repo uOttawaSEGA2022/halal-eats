@@ -62,11 +62,11 @@ public class EditMenu extends AppCompatActivity {
 
                 // !!!!!!!!!!!!!!!!!!! make sure they can't add empty meal //
 
-                String mealName = mealNameInput.getText().toString();
-                String mealType = mealTypeInput.getText().toString();
-                String mealCuisine = mealCuisineInput.getText().toString();
-                String mealDesc = mealDescInput.getText().toString();
-                String price = priceInput.getText().toString().replace(".", ",").replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
+                String mealName = mealNameInput.getText().toString().replace(".", ",").replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
+                String mealType = mealTypeInput.getText().toString().replace(".", ",").replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
+                String mealCuisine = mealCuisineInput.getText().toString().replace(".", ",").replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
+                String mealDesc = mealDescInput.getText().toString().replace(".", ",").replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
+                String price = priceInput.getText().toString().replace("$", "CAD").replace("[", "(").replace("]", ")".replace("#", "number").replace("/", ""));
 
                 if (!mealName.isEmpty()) {
                     databaseReference = FirebaseDatabase.getInstance().getReference("users");
@@ -99,13 +99,21 @@ public class EditMenu extends AppCompatActivity {
                         // set textView error
                         mealNameInput.setError("Meal already exists in menu");
 
-                    } else {
+                    }
+                    else if (mealName.isEmpty() || mealCuisine.isEmpty() || mealDesc.isEmpty() || mealType.isEmpty() || price.isEmpty()){
+                        mealNameInput.setError("Please fill in all the fields");
+                    }
+
+                    else if (!isNumeric(price)) {
+                        mealNameInput.setError("Price must only contain numbers");
+                    }
+                    else {
                         databaseReference.child(email).child("menu").child(mealName).child("offered").setValue(false);
                         databaseReference.child(email).child("menu").child(mealName).child("mealName").setValue(mealName);
                         databaseReference.child(email).child("menu").child(mealName).child("mealType").setValue(mealType);
                         databaseReference.child(email).child("menu").child(mealName).child("cuisine").setValue(mealCuisine);
                         databaseReference.child(email).child("menu").child(mealName).child("desc").setValue(mealDesc);
-                        databaseReference.child(email).child("menu").child(mealName).child("price").setValue(price);
+                        databaseReference.child(email).child("menu").child(mealName).child("price").setValue(price.replace(".",","));
 
                         mealNameInput.getText().clear();
                         mealCuisineInput.getText().clear();
@@ -237,5 +245,16 @@ public class EditMenu extends AppCompatActivity {
     public void openHomePage(){
         Intent intent = new Intent(this, CookSuccessfulLogin.class);
         startActivity(intent);
+    }
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }
