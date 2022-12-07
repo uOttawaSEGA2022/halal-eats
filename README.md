@@ -1,8 +1,8 @@
-# Group 21's Mealer App
+# Halal Eats by Group 21
 
 Repository for the SEG2105 Mealer App project.
 
-## Group members:
+## Group members
 Abdullah, Fatmah, Saba, Sophia, Solin
 
 ## Notes
